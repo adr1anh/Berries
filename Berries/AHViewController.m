@@ -7,6 +7,8 @@
 //
 
 #import "AHViewController.h"
+#import <SpriteKit/SpriteKit.h>
+#import "AHMainScene.h"
 
 @interface AHViewController ()
 
@@ -14,10 +16,20 @@
 
 @implementation AHViewController
 
-- (void)viewDidLoad
+- (void)loadView
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [super loadView];
+    CGRect oldFrame = self.view.frame;
+    self.view = [[SKView alloc] initWithFrame:oldFrame];
+    
+    AHMainScene *mainScene = [[AHMainScene alloc] initWithSize:self.view.frame.size];
+    [mainScene setBackgroundColor:[UIColor yellowColor]];
+    [(SKView *)self.view presentScene:mainScene];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
 }
 
 - (void)didReceiveMemoryWarning

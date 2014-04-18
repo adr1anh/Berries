@@ -21,6 +21,10 @@
 		3A24B83018A942F600E93EBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B81218A942F600E93EBB /* UIKit.framework */; };
 		3A24B83818A942F600E93EBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B83618A942F600E93EBB /* InfoPlist.strings */; };
 		3A24B83A18A942F600E93EBB /* BerriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B83918A942F600E93EBB /* BerriesTests.m */; };
+		3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B84318A9438D00E93EBB /* SpriteKit.framework */; };
+		3A24B84718A9445400E93EBB /* AHMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B84618A9445400E93EBB /* AHMainScene.m */; };
+		3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7918ABCDE100E843BA /* AHCamp.m */; };
+		3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7C18ABD5A200E843BA /* AHBerries.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +57,14 @@
 		3A24B83518A942F600E93EBB /* BerriesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BerriesTests-Info.plist"; sourceTree = "<group>"; };
 		3A24B83718A942F600E93EBB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3A24B83918A942F600E93EBB /* BerriesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BerriesTests.m; sourceTree = "<group>"; };
+		3A24B84318A9438D00E93EBB /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
+		3A24B84518A9445400E93EBB /* AHMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainScene.h; sourceTree = "<group>"; };
+		3A24B84618A9445400E93EBB /* AHMainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainScene.m; sourceTree = "<group>"; };
+		3A9647DA19004EB200E62A4E /* SKSpriteNode_Origin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSpriteNode_Origin.h; sourceTree = "<group>"; };
+		3AAD1E7818ABCDE100E843BA /* AHCamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCamp.h; sourceTree = "<group>"; };
+		3AAD1E7918ABCDE100E843BA /* AHCamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCamp.m; sourceTree = "<group>"; };
+		3AAD1E7B18ABD5A200E843BA /* AHBerries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHBerries.h; sourceTree = "<group>"; };
+		3AAD1E7C18ABD5A200E843BA /* AHBerries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHBerries.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */,
 				3A24B81118A942F600E93EBB /* CoreGraphics.framework in Frameworks */,
 				3A24B81318A942F600E93EBB /* UIKit.framework in Frameworks */,
 				3A24B80F18A942F600E93EBB /* Foundation.framework in Frameworks */,
@@ -101,6 +114,7 @@
 		3A24B80D18A942F600E93EBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3A24B84318A9438D00E93EBB /* SpriteKit.framework */,
 				3A24B80E18A942F600E93EBB /* Foundation.framework */,
 				3A24B81018A942F600E93EBB /* CoreGraphics.framework */,
 				3A24B81218A942F600E93EBB /* UIKit.framework */,
@@ -115,6 +129,13 @@
 				3A24B81D18A942F600E93EBB /* AHAppDelegate.h */,
 				3A24B81E18A942F600E93EBB /* AHAppDelegate.m */,
 				3A24B82018A942F600E93EBB /* Main.storyboard */,
+				3A24B84518A9445400E93EBB /* AHMainScene.h */,
+				3A24B84618A9445400E93EBB /* AHMainScene.m */,
+				3A9647DA19004EB200E62A4E /* SKSpriteNode_Origin.h */,
+				3AAD1E7B18ABD5A200E843BA /* AHBerries.h */,
+				3AAD1E7C18ABD5A200E843BA /* AHBerries.m */,
+				3AAD1E7818ABCDE100E843BA /* AHCamp.h */,
+				3AAD1E7918ABCDE100E843BA /* AHCamp.m */,
 				3A24B82318A942F600E93EBB /* AHViewController.h */,
 				3A24B82418A942F600E93EBB /* AHViewController.m */,
 				3A24B82618A942F600E93EBB /* Images.xcassets */,
@@ -197,7 +218,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AH;
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Adrian Hamelink";
 				TargetAttributes = {
 					3A24B82B18A942F600E93EBB = {
@@ -250,6 +271,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A24B84718A9445400E93EBB /* AHMainScene.m in Sources */,
+				3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */,
+				3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */,
 				3A24B81B18A942F600E93EBB /* main.m in Sources */,
 				3A24B82518A942F600E93EBB /* AHViewController.m in Sources */,
 				3A24B81F18A942F600E93EBB /* AHAppDelegate.m in Sources */,
@@ -306,7 +330,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -345,7 +368,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
@@ -403,7 +425,6 @@
 		3A24B84118A942F600E93EBB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Berries.app/Berries";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -426,7 +447,6 @@
 		3A24B84218A942F600E93EBB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Berries.app/Berries";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -461,6 +481,7 @@
 				3A24B83F18A942F600E93EBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3A24B84018A942F600E93EBB /* Build configuration list for PBXNativeTarget "BerriesTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +490,7 @@
 				3A24B84218A942F600E93EBB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
