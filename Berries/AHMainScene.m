@@ -70,6 +70,9 @@ CGFloat kScoreBarheight = 55.0;
     self.greyCamp.physicsBody = greyPhysics;
     
     [self createBerryAtLocation:[self randomLocationForBerry]];
+    [self createBerryAtLocation:[self randomLocationForBerry]];
+    [self createBerryAtLocation:[self randomLocationForBerry]];
+    [self createBerryAtLocation:[self randomLocationForBerry]];
 }
 
 - (CGPoint)randomLocationForBerry
@@ -115,44 +118,46 @@ CGFloat kScoreBarheight = 55.0;
     }
 }
 
+- (AHCamp *)berryIsInCamp:(AHBerries *)berry
+{
+    //Check all nodes under touch
+    //If the node is a camp, return it
+    //Otherwise return nil
+    for (SKNode *node in [self nodesAtPoint:berry.position]) {
+        if ([node isKindOfClass:[AHCamp class]]) {
+            NSLog(@"%@", node.name);
+            return (AHCamp *)node;
+        }
+    }
+    return nil;
+}
+
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
     if ([[self nodeAtPoint:self.draggedBerry.position] isKindOfClass:[AHBerries class]]) {
-//        NSLog(@"%@", [self nodeAtPoint:self.draggedBerry.position]);
-        for (SKNode* node in [self nodesAtPoint:self.draggedBerry.position]) {
-            if ([node isKindOfClass:[AHCamp class]]) {
-                AHCamp *destinationCamp = (AHCamp *) node;
-                [self.draggedBerry removeFromParent];
-                self.draggedBerry.position = CGPointMake(self.draggedBerry.position.x - destinationCamp.frame.origin.x,
-                                                         self.draggedBerry.position.y - destinationCamp.frame.origin.y);
-            }
+        AHCamp *destinationCamp = [self berryIsInCamp:self.draggedBerry];
+        if (destinationCamp) {
+            [self.draggedBerry removeFromParent];
+            UITouch *touch = [touches anyObject];
+            CGPoint location = [touch locationInNode:destinationCamp];
+            self.draggedBerry.position = location;
+            self.draggedBerry.lastPosition = location;
+            [destinationCamp addChild:self.draggedBerry];
+            self.draggedBerry = nil;
+        } else {
+            [self.draggedBerry removeFromParent];
+            self.draggedBerry.position = self.draggedBerry.lastPosition;
+            [self.greyCamp addChild:self.draggedBerry];
+            self.draggedBerry = nil;
         }
-        [self.draggedBerry removeFromParent];
-        self.draggedBerry.position = self.draggedBerry.lastPosition;
-        [self.greyCamp addChild:self.draggedBerry];
-        self.draggedBerry = nil;
     }
 }
 
-//- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-//{
-//    [super touchesEnded:touches withEvent:event];
-//    
-//    for (SKNode *nodeAtPoint in [self nodesAtPoint:self.draggedBerry.position]) {
-//        if ([nodeAtPoint isKindOfClass:[AHCamp class]]) {
-//            AHCamp *destinationCamp = (AHCamp *) nodeAtPoint;
-//            [self.draggedBerry removeFromParent];
-//            self.draggedBerry.position = CGPointMake(self.draggedBerry.position.x - destinationCamp.position.x + destinationCamp.size.width / 2,
-//                                                     self.draggedBerry.position.y - destinationCamp.position.y + destinationCamp.size.height / 2);
-//            [destinationCamp addChild:self.draggedBerry];
-//        } else {
-//            [self.draggedBerry removeFromParent];
-//            self.draggedBerry.position = self.draggedBerryOrigin;
-//            [self.greyCamp addChild:self.draggedBerry];
-//        }
-//    }
-//}
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    
+}
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
