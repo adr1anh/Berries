@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface AHCamp : SKSpriteNode
-
+@property (strong, nonatomic) UIColor *color;
 @end

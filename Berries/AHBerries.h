@@ -9,5 +9,6 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface AHBerries : SKSpriteNode
+//lastPosition for when resetting a berry
 @property CGPoint lastPosition;
 @end

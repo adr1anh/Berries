@@ -10,12 +10,4 @@
 
 @implementation AHBerries
 
-//- (void)setPosition:(CGPoint)position
-//{
-//    [super setPosition:position];
-//    if (CGPointEqualToPoint(self.lastPosition, CGPointZero)) {
-//        self.lastPosition = position;
-//    }
-//}
-
 @end

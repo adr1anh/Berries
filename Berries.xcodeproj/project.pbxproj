@@ -60,7 +60,6 @@
 		3A24B84318A9438D00E93EBB /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3A24B84518A9445400E93EBB /* AHMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainScene.h; sourceTree = "<group>"; };
 		3A24B84618A9445400E93EBB /* AHMainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainScene.m; sourceTree = "<group>"; };
-		3A9647DA19004EB200E62A4E /* SKSpriteNode_Origin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SKSpriteNode_Origin.h; sourceTree = "<group>"; };
 		3AAD1E7818ABCDE100E843BA /* AHCamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCamp.h; sourceTree = "<group>"; };
 		3AAD1E7918ABCDE100E843BA /* AHCamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCamp.m; sourceTree = "<group>"; };
 		3AAD1E7B18ABD5A200E843BA /* AHBerries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHBerries.h; sourceTree = "<group>"; };
@@ -131,7 +130,6 @@
 				3A24B82018A942F600E93EBB /* Main.storyboard */,
 				3A24B84518A9445400E93EBB /* AHMainScene.h */,
 				3A24B84618A9445400E93EBB /* AHMainScene.m */,
-				3A9647DA19004EB200E62A4E /* SKSpriteNode_Origin.h */,
 				3AAD1E7B18ABD5A200E843BA /* AHBerries.h */,
 				3AAD1E7C18ABD5A200E843BA /* AHBerries.m */,
 				3AAD1E7818ABCDE100E843BA /* AHCamp.h */,
