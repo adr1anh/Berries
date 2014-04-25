@@ -12,17 +12,16 @@
 
 CGFloat kSpacingBetweenCamps = 12.0;
 CGFloat kBerrySize = 15.0;
-CGFloat kScoreBarheight = 55.0;
-AHDifficulty kDifficulty = AHDifficultyHard;
+CGFloat kScoreBarheight = 44.0;
+AHDifficulty kDifficulty = AHDifficultyHard ;
 
 @interface AHMainScene ()
 @property (nonatomic, strong) NSMutableArray *berryNodes;
 @property (nonatomic, weak) AHBerries *draggedBerry;
 @property (nonatomic, strong) SKSpriteNode *scoreBar;
 @property (nonatomic, strong) NSArray *camps;
-@property (nonatomic, strong) AHCamp *blueCamp;
-@property (nonatomic, strong) AHCamp *redCamp;
-@property (nonatomic, strong) AHCamp *greyCamp;
+@property (nonatomic, readonly, strong) AHCamp *greyCamp;
+
 @end
 
 @implementation AHMainScene
@@ -38,9 +37,9 @@ AHDifficulty kDifficulty = AHDifficultyHard;
 - (SKSpriteNode *)scoreBar
 {
     if (!_scoreBar) {
-        _scoreBar = [[SKSpriteNode alloc] initWithColor:[SKColor greenColor] size:CGSizeMake(self.size.width, kScoreBarheight)];
-        [_scoreBar setPosition:CGPointMake(self.size.width / 2,
-                                               self.size.height - kScoreBarheight / 2)];
+        _scoreBar = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(self.size.width, kScoreBarheight)];
+        _scoreBar.position = CGPointMake(self.size.width / 2,
+                                       self.size.height - kScoreBarheight / 2);
         self.scoreBar.name = @"scoreBar";
     }
     return _scoreBar;
@@ -49,76 +48,104 @@ AHDifficulty kDifficulty = AHDifficultyHard;
 - (NSArray *)camps
 {
     if (!_camps) {
-        CGFloat campHeight;
-        CGFloat campWidth;
-        AHCamp *greyCamp;
-        
-        if (kDifficulty == AHDifficultyEasy) {
-            campHeight = (self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps * 4) / 3;
-            campWidth = self.size.width - 2 * kSpacingBetweenCamps;
-            
-            AHCamp *topCamp = [[AHCamp alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(campWidth, campHeight)];
-            topCamp.position = CGPointMake(self.size.width / 2,
-                                             self.size.height - self.scoreBar.size.height- kSpacingBetweenCamps - campHeight / 2);
-            
-            AHCamp *bottomCamp = [[AHCamp alloc] initWithColor:[SKColor redColor] size:CGSizeMake(campWidth, campHeight)];
-            bottomCamp.position = CGPointMake(self.size.width / 2,
-                                              self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight ) - campHeight / 2);
-            
-            greyCamp = [[AHCamp alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(campWidth, campHeight)];
-            greyCamp.position = CGPointMake(self.size.width / 2,
-                                            self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight ) - campHeight / 2);
-            
-            return @[greyCamp, topCamp, bottomCamp];
-        }
-        
-        campHeight = (self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps * 4) / 3;
-        campWidth = (self.size.width - 3 * kSpacingBetweenCamps) / 2;
-        
-        AHCamp *topLeftCamp = [[AHCamp alloc] initWithColor:[SKColor blueColor] size:CGSizeMake(campWidth, campHeight)];
-        topLeftCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth / 2,
-                                           self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - campHeight / 2);
-        
-        AHCamp *topRightCamp = [[AHCamp alloc] initWithColor:[SKColor redColor] size:CGSizeMake(campWidth, campHeight)];
-        topRightCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth + kSpacingBetweenCamps + campWidth / 2,
-                                            self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - campHeight / 2);
-        
-        AHCamp *bottomLeftCamp = [[AHCamp alloc] initWithColor:[SKColor orangeColor] size:CGSizeMake(campWidth, campHeight)];
-        bottomLeftCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth / 2,
-                                              self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight) - campHeight / 2);
-        
-        AHCamp *bottomRightCamp = [[AHCamp alloc] initWithColor:[SKColor brownColor] size:CGSizeMake(campWidth, campHeight)];
-        bottomRightCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth + kSpacingBetweenCamps + campWidth / 2,
-                                               self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight) - campHeight / 2);
-        if (kDifficulty == AHDifficultyMedium) {
-            greyCamp = [[AHCamp alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(campWidth * 2 + kSpacingBetweenCamps, campHeight)];
-            greyCamp.position = CGPointMake(self.size.width / 2,
-                                            self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
-            
-            return @[greyCamp, topLeftCamp, topRightCamp, bottomLeftCamp, bottomRightCamp];
-        }
-        
-        AHCamp *leftCamp;
-        AHCamp *rightCamp;
+        switch (kDifficulty) {
+            case AHDifficultyEasy:
+            {
+                CGFloat campHeight = (self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps * 4) / 3;
+                CGFloat campWidth = self.size.width - 2 * kSpacingBetweenCamps;
+                CGSize campSize = CGSizeMake(campWidth, campHeight);
                 
-        if (kDifficulty == AHDifficultyHard) {
-            CGFloat greyCampWidth = (self.size.width - 4 * kSpacingBetweenCamps) / 3;
-            leftCamp = [[AHCamp alloc] initWithColor:[SKColor whiteColor] size:CGSizeMake(greyCampWidth, campHeight)];
-            leftCamp.position = CGPointMake(kSpacingBetweenCamps + greyCampWidth / 2,
-                                            self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
-            
-            rightCamp = [[AHCamp alloc] initWithColor:[SKColor cyanColor] size:CGSizeMake(greyCampWidth, campHeight)];
-            rightCamp.position = CGPointMake(kSpacingBetweenCamps + 2 * (greyCampWidth + kSpacingBetweenCamps) + greyCampWidth / 2,
-                                             self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
-            
-            greyCamp = [[AHCamp alloc] initWithColor:[SKColor grayColor] size:CGSizeMake(greyCampWidth, campHeight)];
-            greyCamp.position = CGPointMake(kSpacingBetweenCamps + (greyCampWidth + kSpacingBetweenCamps) + greyCampWidth / 2,
-                                            self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
-            
-            return @[greyCamp, topLeftCamp, topRightCamp, bottomLeftCamp, bottomRightCamp, leftCamp, rightCamp];
+                AHCamp *topCamp = [AHCamp spriteNodeWithColor:[SKColor blueColor] size:campSize];
+                topCamp.position = CGPointMake(self.size.width / 2,
+                                               self.size.height - self.scoreBar.size.height- kSpacingBetweenCamps - campHeight / 2);
+                
+                AHCamp *bottomCamp = [AHCamp spriteNodeWithColor:[SKColor redColor] size:campSize];
+                bottomCamp.position = CGPointMake(self.size.width / 2,
+                                                  self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight ) - campHeight / 2);
+                
+                AHCamp *greyCamp = [AHCamp spriteNodeWithColor:[SKColor grayColor] size:campSize];
+                greyCamp.position = CGPointMake(self.size.width / 2,
+                                                self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight ) - campHeight / 2);
+                
+                _camps = @[greyCamp, topCamp, bottomCamp];
+                break;
+            }
+            case AHDifficultyMedium:
+            {
+                CGFloat campHeight = (self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps * 4) / 3;
+                CGFloat campWidth = (self.size.width - 3 * kSpacingBetweenCamps) / 2;
+                CGSize campSize = CGSizeMake(campWidth, campHeight);
+                
+                AHCamp *topLeftCamp = [AHCamp spriteNodeWithColor:[SKColor blueColor] size:campSize];
+                topLeftCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth / 2,
+                                                   self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - campHeight / 2);
+                
+                AHCamp *topRightCamp = [AHCamp spriteNodeWithColor:[SKColor redColor] size:campSize];
+                topRightCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth + kSpacingBetweenCamps + campWidth / 2,
+                                                    self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - campHeight / 2);
+                
+                AHCamp *bottomLeftCamp = [AHCamp spriteNodeWithColor:[SKColor orangeColor] size:campSize];
+                bottomLeftCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth / 2,
+                                                      self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                AHCamp *bottomRightCamp = [AHCamp spriteNodeWithColor:[SKColor brownColor] size:campSize];
+                bottomRightCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth + kSpacingBetweenCamps + campWidth / 2,
+                                                       self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                AHCamp *greyCamp = [AHCamp spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(campWidth * 2 + kSpacingBetweenCamps, campHeight)];
+                greyCamp.position = CGPointMake(self.size.width / 2,
+                                                self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                _camps = @[greyCamp, topLeftCamp, topRightCamp, bottomLeftCamp, bottomRightCamp];
+                return _camps;
+                break;
+            }
+            case AHDifficultyHard:
+            {
+                CGFloat campHeight = (self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps * 4) / 3;
+                CGFloat campWidth = (self.size.width - 3 * kSpacingBetweenCamps) / 2;
+                CGSize campSize = CGSizeMake(campWidth, campHeight);
+                CGFloat greyCampWidth = (self.size.width - 4 * kSpacingBetweenCamps) / 3;
+                
+                AHCamp *topLeftCamp = [AHCamp spriteNodeWithColor:[SKColor blueColor] size:campSize];
+                topLeftCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth / 2,
+                                                   self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - campHeight / 2);
+                
+                AHCamp *topRightCamp = [AHCamp spriteNodeWithColor:[SKColor redColor] size:campSize];
+                topRightCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth + kSpacingBetweenCamps + campWidth / 2,
+                                                    self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - campHeight / 2);
+                
+                AHCamp *bottomLeftCamp = [AHCamp spriteNodeWithColor:[SKColor orangeColor] size:campSize];
+                bottomLeftCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth / 2,
+                                                      self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                AHCamp *bottomRightCamp = [AHCamp spriteNodeWithColor:[SKColor brownColor] size:campSize];
+                bottomRightCamp.position = CGPointMake(kSpacingBetweenCamps + campWidth + kSpacingBetweenCamps + campWidth / 2,
+                                                       self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - 2 * (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                AHCamp *leftCamp = [AHCamp spriteNodeWithColor:[SKColor whiteColor] size:CGSizeMake(greyCampWidth, campHeight)];
+                leftCamp.position = CGPointMake(kSpacingBetweenCamps + greyCampWidth / 2,
+                                                self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                AHCamp *rightCamp = [AHCamp spriteNodeWithColor:[SKColor cyanColor] size:CGSizeMake(greyCampWidth, campHeight)];
+                rightCamp.position = CGPointMake(kSpacingBetweenCamps + 2 * (greyCampWidth + kSpacingBetweenCamps) + greyCampWidth / 2,
+                                                 self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                AHCamp *greyCamp = [AHCamp spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(greyCampWidth, campHeight)];
+                greyCamp.position = CGPointMake(kSpacingBetweenCamps + (greyCampWidth + kSpacingBetweenCamps) + greyCampWidth / 2,
+                                                self.size.height - self.scoreBar.size.height - kSpacingBetweenCamps - (kSpacingBetweenCamps + campHeight) - campHeight / 2);
+                
+                _camps = @[greyCamp, topLeftCamp, topRightCamp, bottomLeftCamp, bottomRightCamp, leftCamp, rightCamp];
+                break;
+            }
         }
     }
     return _camps;
+}
+
+- (AHCamp *)greyCamp
+{
+    return (AHCamp *) self.camps[0];
 }
 
 - (void)createScene
@@ -128,10 +155,9 @@ AHDifficulty kDifficulty = AHDifficultyHard;
         [self addChild:camp];
     }
     
-    [self createBerryAtLocation:[self randomLocationForBerry]];
-    [self createBerryAtLocation:[self randomLocationForBerry]];
-    [self createBerryAtLocation:[self randomLocationForBerry]];
-    [self createBerryAtLocation:[self randomLocationForBerry]];
+    for (int i = 0; i < 10; i++) {
+        [self createBerryAtLocation:[self randomLocationForBerry]];
+    }
 }
 
 - (CGPoint)randomLocationForBerry
@@ -143,18 +169,18 @@ AHDifficulty kDifficulty = AHDifficultyHard;
 
 - (AHBerries *)createBerryAtLocation:(CGPoint)location
 {
+    AHCamp *randomCamp = self.camps[1 + arc4random_uniform((u_int32_t) self.camps.count - 1)];
+    return [self createBerryAtLocation:location withColor:randomCamp.color];
+}
+
+- (AHBerries *)createBerryAtLocation:(CGPoint)location withColor:(SKColor *)color
+{
     CGSize berrySize = CGSizeMake(kBerrySize, kBerrySize);
     
-    SKPhysicsBody *berryPhysics = [SKPhysicsBody bodyWithRectangleOfSize:berrySize];
-    berryPhysics.dynamic = YES;
-    berryPhysics.affectedByGravity = NO;
-    berryPhysics.mass = 0;
+    AHBerries *berry = [AHBerries spriteNodeWithColor:color size:berrySize];
     
-    AHBerries *berry = [[AHBerries alloc] initWithColor:[SKColor purpleColor] size:berrySize];
-    [berry setPosition:location];
+    berry.position = location;
     berry.lastPosition = location;
-    berry.physicsBody = berryPhysics;
-    berry.name = @"berry";
     
     [self.greyCamp addChild:berry];
     [self.berryNodes addObject:berry];
@@ -208,7 +234,7 @@ AHDifficulty kDifficulty = AHDifficultyHard;
         
         //Check if berry is in a camp
         AHCamp *destinationCamp = [self berryIsInCamp:self.draggedBerry];
-        if (destinationCamp) {
+        if (destinationCamp && [destinationCamp.color isEqual:self.draggedBerry.color]) {
             
             //Remove from MainScene
             [self.draggedBerry removeFromParent];
