@@ -23,7 +23,7 @@
     self.view = [[SKView alloc] initWithFrame:oldFrame];
     
     AHMainScene *mainScene = [[AHMainScene alloc] initWithSize:self.view.frame.size];
-    [mainScene setBackgroundColor:[UIColor yellowColor]];
+    [mainScene setBackgroundColor:[UIColor lightGrayColor]];
     [(SKView *)self.view presentScene:mainScene];
 }
 

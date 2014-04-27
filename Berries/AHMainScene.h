@@ -10,8 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, AHDifficulty) {
     AHDifficultyEasy = 2,           // 2 camps: bottom, top
-    AHDifficultyMedium = 4,         // 4 camps: top left, top right, bottom left, bottom right
-    AHDifficultyHard = 6,           // 6 camps: same as medium, but also left and right of the grey camp
+    AHDifficultyMedium = 3,         // 3 camps: top left, top right, bottom
+    AHDifficultyHard = 4,           // 4 camps: top left, top right, bottom left, bottom right
 };
 
 @interface AHMainScene : SKScene
