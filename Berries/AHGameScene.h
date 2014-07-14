@@ -1,5 +1,5 @@
 //
-//  AHMainScene.h
+//  AHGameScene.h
 //  Berries
 //
 //  Created by Adrian Hamelink on 10/02/14.
@@ -14,6 +14,6 @@ typedef NS_ENUM(NSUInteger, AHDifficulty) {
     AHDifficultyHard = 4,           // 4 camps: top left, top right, bottom left, bottom right
 };
 
-@interface AHMainScene : SKScene
+@interface AHGameScene : SKScene
 
 @end

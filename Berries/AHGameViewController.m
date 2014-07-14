@@ -8,10 +8,12 @@
 
 #import "AHGameViewController.h"
 #import <SpriteKit/SpriteKit.h>
-#import "AHMainScene.h"
+#import "AHGameScene.h"
 
 @interface AHGameViewController ()
-@property (nonatomic, strong) AHMainScene *gameScene;
+@property (strong, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (strong, nonatomic) IBOutlet SKView *gameView;
+@property (nonatomic, strong) AHGameScene *gameScene;
 @end
 
 @implementation AHGameViewController
@@ -33,11 +35,11 @@
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 0) {
-        self.gameScene = [[AHMainScene alloc] initWithSize:self.view.frame.size];
-        [(SKView *)self.view presentScene:self.gameScene transition:[SKTransition flipHorizontalWithDuration:.5]];
+        self.gameScene = [[AHGameScene alloc] initWithSize:self.gameView.frame.size];
+        [self.gameView presentScene:self.gameScene transition:[SKTransition flipHorizontalWithDuration:.5]];
     } else if (buttonIndex == 1) {
-        self.gameScene = [[AHMainScene alloc] initWithSize:self.view.frame.size];
-        [(SKView *)self.view presentScene:self.gameScene transition:[SKTransition flipHorizontalWithDuration:.5]];
+        self.gameScene = [[AHGameScene alloc] initWithSize:self.gameView.frame.size];
+        [self.gameView presentScene:self.gameScene transition:[SKTransition flipHorizontalWithDuration:.5]];
     }
 }
 
@@ -49,11 +51,9 @@
 - (void)loadView
 {
     [super loadView];
-    CGRect oldFrame = self.view.frame;
-    self.view = [[SKView alloc] initWithFrame:oldFrame];
     
-    self.gameScene = [[AHMainScene alloc] initWithSize:self.view.frame.size];
-    [(SKView *)self.view presentScene:self.gameScene];
+    self.gameScene = [[AHGameScene alloc] initWithSize:self.gameView.frame.size];
+    [self.gameView presentScene:self.gameScene];
 }
 
 - (void)viewWillAppear:(BOOL)animated

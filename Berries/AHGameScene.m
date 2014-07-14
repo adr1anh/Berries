@@ -1,37 +1,39 @@
 //
-//  AHMainScene.m
+//  AHGameScene.m
 //  Berries
 //
 //  Created by Adrian Hamelink on 10/02/14.
 //  Copyright (c) 2014 Adrian Hamelink. All rights reserved.
 //
 
-#import "AHMainScene.h"
+#import "AHGameScene.h"
 #import "AHBerries.h"
 #import "AHCamp.h"
 
 CGFloat kScoreBarheight = 44.0;
 AHDifficulty kDifficulty = AHDifficultyEasy;
 
-@interface AHMainScene ()
+@protocol GameSceneDelegate <NSObject>
+
+@end
+
+@interface AHGameScene ()
 @property (nonatomic, strong) NSMutableArray *berryNodes;
 @property (nonatomic, weak) AHBerries *draggedBerry;
-@property (nonatomic, strong) SKSpriteNode *scoreBar;
 @property (nonatomic, strong) NSArray *camps;
 @property (nonatomic, readonly, strong) AHCamp *greyCamp;
-@property (nonatomic, strong) SKLabelNode *scoreLabel;
-@property (nonatomic, strong) SKLabelNode *timeLabel;
 @property (nonatomic) NSUInteger score;
 @property (nonatomic, strong) NSTimer *time;
 @property (nonatomic, strong) NSDate *startTime;
 @end
 
-@implementation AHMainScene
+@implementation AHGameScene
 
 - (instancetype)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
         [self createScene];
+        NSLog(@"%@", NSStringFromCGSize(self.size));
     }
     return self;
 }
@@ -40,10 +42,6 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
 {
     self.time = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTimeLabel:) userInfo:nil repeats:YES];
     self.startTime = [NSDate date];
-    
-    [self addChild:self.scoreBar];
-    [self.scoreBar addChild:self.timeLabel];
-    [self.scoreBar addChild:self.scoreLabel];
     
     for (AHCamp *camp in self.camps) {
         camp.zPosition = 1;
@@ -95,54 +93,14 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
 
 #pragma mark Score Bar
 
-- (SKSpriteNode *)scoreBar
-{
-    if (!_scoreBar) {
-        _scoreBar = [SKSpriteNode spriteNodeWithColor:[SKColor greenColor] size:CGSizeMake(self.size.width, kScoreBarheight)];
-        _scoreBar.position = CGPointMake(self.size.width / 2,
-                                         self.size.height - kScoreBarheight / 2);
-        self.scoreBar.name = @"scoreBar";
-    }
-    return _scoreBar;
-}
-
-- (SKLabelNode *)scoreLabel
-{
-    if (!_scoreLabel) {
-        _scoreLabel = [SKLabelNode labelNodeWithText:@"0"];
-        _scoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-        _scoreLabel.fontName = @"TrebuchetMS-Bold";
-        _scoreLabel.fontSize = 20;
-        _scoreLabel.position = CGPointZero;
-    }
-    return _scoreLabel;
-}
-
 - (void)setScore:(NSUInteger)score
 {
-    self.scoreLabel.text = [NSString stringWithFormat:@"%i", score];
     _score = score;
-}
-
-- (SKLabelNode *)timeLabel
-{
-    if (!_timeLabel) {
-        _timeLabel = [SKLabelNode labelNodeWithText:@"0:00"];
-        _timeLabel.verticalAlignmentMode = SKLabelVerticalAlignmentModeCenter;
-        _timeLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentModeLeft;
-        _timeLabel.fontName = @"TrebuchetMS-Bold";
-        _timeLabel.fontSize = 20;
-        _timeLabel.position = CGPointMake(- ((self.size.width / 2) - 15), 0);
-    }
-    return _timeLabel;
 }
 
 - (void)updateTimeLabel:(NSTimer *)timer
 {
-    NSTimeInterval elapsed = - self.startTime.timeIntervalSinceNow;
-    int seconds = (int) elapsed % 60;
-    int minutes = (elapsed - seconds) / 60;
-    self.timeLabel.text = [NSString stringWithFormat:@"%i:%.2i", minutes, seconds];
+
 }
 
 #pragma mark Camps
@@ -153,28 +111,28 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
         switch (kDifficulty) {
             case AHDifficultyEasy:
             {
-                CGFloat campHeight = (self.size.height - self.scoreBar.size.height) / 3;
+                CGFloat campHeight = self.size.height / 3;
                 CGFloat campWidth = self.size.width;
                 CGSize campSize = CGSizeMake(campWidth, campHeight);
                 
                 AHCamp *orange = [AHCamp spriteNodeWithBerryType:AHBerryTypeOrange size:campSize];
                 orange.position = CGPointMake(self.size.width / 2,
-                                               self.size.height - self.scoreBar.size.height - campHeight / 2);
+                                              self.size.height - campHeight / 2);
                 
                 AHCamp *lemon = [AHCamp spriteNodeWithBerryType:AHBerryTypeLemon size:campSize];
                 lemon.position = CGPointMake(self.size.width / 2,
-                                                  self.size.height - self.scoreBar.size.height - 2 * campHeight - campHeight / 2);
+                                             self.size.height - 2 * campHeight - campHeight / 2);
                 
                 AHCamp *greyCamp = [AHCamp spriteNodeWithColor:[SKColor grayColor] size:campSize];
                 greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - self.scoreBar.size.height - campHeight - campHeight / 2);
+                                                self.size.height - campHeight - campHeight / 2);
                 
                 _camps = @[greyCamp, orange, lemon];
                 break;
             }
             case AHDifficultyMedium:
             {
-                CGFloat campHeight = (self.size.height - self.scoreBar.size.height) / 3;
+                CGFloat campHeight = self.size.height / 3;
                 CGFloat smallCampWidth = self.size.width / 2;
                 CGFloat bigCampWidth = self.size.width;
                 CGSize smallCampSize = CGSizeMake(smallCampWidth, campHeight);
@@ -182,48 +140,48 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
                 
                 AHCamp *strawberry = [AHCamp spriteNodeWithBerryType:AHBerryTypeStrawberry size:smallCampSize];
                 strawberry.position = CGPointMake(smallCampWidth / 2,
-                                                  self.size.height - self.scoreBar.size.height - campHeight / 2);
+                                                  self.size.height - campHeight / 2);
                 
                 AHCamp *lemon = [AHCamp spriteNodeWithBerryType:AHBerryTypeLemon size:smallCampSize];
                 lemon.position = CGPointMake(smallCampWidth + smallCampWidth / 2,
-                                             self.size.height - self.scoreBar.size.height - campHeight / 2);
+                                             self.size.height - campHeight / 2);
                 
                 AHCamp *orange = [AHCamp spriteNodeWithBerryType:AHBerryTypeOrange size:bigCampSize];
                 orange.position = CGPointMake(self.size.width / 2,
-                                              self.size.height - self.scoreBar.size.height - 2 * campHeight - campHeight / 2);
+                                              self.size.height - 2 * campHeight - campHeight / 2);
                 
                 AHCamp *greyCamp = [AHCamp spriteNodeWithColor:[SKColor grayColor] size:bigCampSize];
                 greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - self.scoreBar.size.height - campHeight - campHeight / 2);
+                                                self.size.height - campHeight - campHeight / 2);
                 
                 _camps = @[greyCamp, strawberry, lemon, orange];
                 break;
             }
             case AHDifficultyHard:
             {
-                CGFloat campHeight = (self.size.height - self.scoreBar.size.height) / 3;
+                CGFloat campHeight = self.size.height / 3;
                 CGFloat campWidth = self.size.width / 2;
                 CGSize campSize = CGSizeMake(campWidth, campHeight);
                 
                 AHCamp *strawberry = [AHCamp spriteNodeWithBerryType:AHBerryTypeStrawberry size:campSize];
                 strawberry.position = CGPointMake(campWidth / 2,
-                                                  self.size.height - self.scoreBar.size.height - campHeight / 2);
+                                                  self.size.height - campHeight / 2);
                 
                 AHCamp *lemon = [AHCamp spriteNodeWithBerryType:AHBerryTypeLemon size:campSize];
                 lemon.position = CGPointMake(campWidth + campWidth / 2,
-                                             self.size.height - self.scoreBar.size.height - campHeight / 2);
+                                             self.size.height - campHeight / 2);
                 
                 AHCamp *orange = [AHCamp spriteNodeWithBerryType:AHBerryTypeOrange size:campSize];
                 orange.position = CGPointMake(campWidth / 2,
-                                              self.size.height - self.scoreBar.size.height - 2 * campHeight - campHeight / 2);
+                                              self.size.height - 2 * campHeight - campHeight / 2);
                 
                 AHCamp *banana = [AHCamp spriteNodeWithBerryType:AHBerryTypeBanana size:campSize];
                 banana.position = CGPointMake(campWidth + campWidth / 2,
-                                              self.size.height - self.scoreBar.size.height - 2 * campHeight - campHeight / 2);
+                                              self.size.height - 2 * campHeight - campHeight / 2);
                 
                 AHCamp *greyCamp = [AHCamp spriteNodeWithColor:[SKColor grayColor] size:CGSizeMake(campWidth * 2, campHeight)];
                 greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - self.scoreBar.size.height - campHeight - campHeight / 2);
+                                                self.size.height - campHeight - campHeight / 2);
                 
                 _camps = @[greyCamp, strawberry, lemon, orange, banana];
             }
@@ -301,7 +259,7 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
                 //Remove from Grey Camp
                 [self.draggedBerry removeFromParent];
                 
-                //Add berry to AHMainScene and set lastPosition for reset
+                //Add berry to AHGameScene and set lastPosition for reset
                 self.draggedBerry.lastPosition = [touch locationInNode:self.greyCamp];
                 self.draggedBerry.position = location;
                 [self addChild:self.draggedBerry];

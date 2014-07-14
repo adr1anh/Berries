@@ -31,6 +31,7 @@
     
     self.backgroundScene = [[AHFallingBerriesScene alloc] initWithSize:self.backgroundView.frame.size];
     [self.backgroundView presentScene:self.backgroundScene];
+    self.backgroundView.showsFPS = YES;
 }
 
 - (void)viewDidLoad
