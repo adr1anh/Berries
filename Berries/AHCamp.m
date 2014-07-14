@@ -22,6 +22,11 @@
 {
     self = [super initWithColor:[AHBerries colorForBerryType:type] size:size];
     if (self) {
+        //Add a greyscale fruit as background
+        SKSpriteNode *greyFruit = [SKSpriteNode spriteNodeWithImageNamed:[[AHBerries imageNameForType:type] stringByAppendingString:@"Grey"]];
+        greyFruit.position = CGPointZero;
+        [self addChild:greyFruit];
+        
         self.berryType = type;
     }
     return self;

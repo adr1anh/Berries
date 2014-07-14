@@ -15,6 +15,7 @@
     self = [super initWithImageNamed:[AHBerries imageNameForType:type]];
     if (self) {
         self.color = [AHBerries colorForBerryType:type];
+        self.success = NO;
         self.berryType = type;
     }
     return self;
@@ -29,20 +30,20 @@
 
 + (SKColor *)colorForBerryType:(AHBerryType)type {
     switch (type) {
-        case AHBerryTypeApple: {
-            return SKColorFromRGB(0xc6000f);
+        case AHBerryTypeBanana: {
+            return SKColorFromRGB(0xffe100);
         }
             
-        case AHBerryTypeCherry: {
-            return SKColorFromRGB(0xff2f3f);
+        case AHBerryTypeStrawberry: {
+            return SKColorFromRGB(0xe6445a);
         }
             
         case AHBerryTypeLemon: {
-            return SKColorFromRGB(0xfff200);
+            return SKColorFromRGB(0xf7cc01);
         }
             
         case AHBerryTypeOrange: {
-            return SKColorFromRGB(0xff7f27);
+            return SKColorFromRGB(0xffc000);
         }
     }
 }
@@ -50,12 +51,12 @@
 + (NSString *)imageNameForType:(AHBerryType)type
 {
     switch (type) {
-        case AHBerryTypeApple: {
-            return @"Apple";
+        case AHBerryTypeBanana: {
+            return @"Banana";
         }
             
-        case AHBerryTypeCherry: {
-            return @"Cherry";
+        case AHBerryTypeStrawberry: {
+            return @"Strawberry";
         }
             
         case AHBerryTypeLemon: {

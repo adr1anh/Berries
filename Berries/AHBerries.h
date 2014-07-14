@@ -10,8 +10,8 @@
 
 typedef NS_ENUM(NSUInteger, AHBerryType) {
     AHBerryTypeOrange = 0,
-    AHBerryTypeApple,
-    AHBerryTypeCherry,
+    AHBerryTypeStrawberry,
+    AHBerryTypeBanana,
     AHBerryTypeLemon
 };
 
@@ -19,9 +19,11 @@ typedef NS_ENUM(NSUInteger, AHBerryType) {
 //lastPosition for when resetting a berry
 @property CGPoint lastPosition;
 @property AHBerryType berryType;
+@property BOOL success;
 
 - (instancetype)initWithBerryType:(AHBerryType)type;
 + (instancetype)spriteNodeWithBerryType:(AHBerryType)type;
 + (SKColor *)colorForBerryType:(AHBerryType)type;
++ (NSString *)imageNameForType:(AHBerryType)type;
 
 @end

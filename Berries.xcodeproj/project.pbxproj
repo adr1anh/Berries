@@ -14,7 +14,7 @@
 		3A24B81B18A942F600E93EBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B81A18A942F600E93EBB /* main.m */; };
 		3A24B81F18A942F600E93EBB /* AHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B81E18A942F600E93EBB /* AHAppDelegate.m */; };
 		3A24B82218A942F600E93EBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B82018A942F600E93EBB /* Main.storyboard */; };
-		3A24B82518A942F600E93EBB /* AHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B82418A942F600E93EBB /* AHViewController.m */; };
+		3A24B82518A942F600E93EBB /* AHGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B82418A942F600E93EBB /* AHGameViewController.m */; };
 		3A24B82718A942F600E93EBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B82618A942F600E93EBB /* Images.xcassets */; };
 		3A24B82E18A942F600E93EBB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B82D18A942F600E93EBB /* XCTest.framework */; };
 		3A24B82F18A942F600E93EBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B80E18A942F600E93EBB /* Foundation.framework */; };
@@ -23,6 +23,8 @@
 		3A24B83A18A942F600E93EBB /* BerriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B83918A942F600E93EBB /* BerriesTests.m */; };
 		3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B84318A9438D00E93EBB /* SpriteKit.framework */; };
 		3A24B84718A9445400E93EBB /* AHMainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B84618A9445400E93EBB /* AHMainScene.m */; };
+		3A8B2F1C1972CB9C008669EB /* AHMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */; };
+		3A8B2F211972CDC7008669EB /* AHFallingBerriesScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */; };
 		3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7918ABCDE100E843BA /* AHCamp.m */; };
 		3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7C18ABD5A200E843BA /* AHBerries.m */; };
 /* End PBXBuildFile section */
@@ -49,8 +51,8 @@
 		3A24B81D18A942F600E93EBB /* AHAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AHAppDelegate.h; sourceTree = "<group>"; };
 		3A24B81E18A942F600E93EBB /* AHAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHAppDelegate.m; sourceTree = "<group>"; };
 		3A24B82118A942F600E93EBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		3A24B82318A942F600E93EBB /* AHViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AHViewController.h; sourceTree = "<group>"; };
-		3A24B82418A942F600E93EBB /* AHViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHViewController.m; sourceTree = "<group>"; };
+		3A24B82318A942F600E93EBB /* AHGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AHGameViewController.h; sourceTree = "<group>"; };
+		3A24B82418A942F600E93EBB /* AHGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHGameViewController.m; sourceTree = "<group>"; };
 		3A24B82618A942F600E93EBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A24B82C18A942F600E93EBB /* BerriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BerriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A24B82D18A942F600E93EBB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -60,6 +62,10 @@
 		3A24B84318A9438D00E93EBB /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3A24B84518A9445400E93EBB /* AHMainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainScene.h; sourceTree = "<group>"; };
 		3A24B84618A9445400E93EBB /* AHMainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainScene.m; sourceTree = "<group>"; };
+		3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainMenuViewController.h; sourceTree = "<group>"; };
+		3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainMenuViewController.m; sourceTree = "<group>"; };
+		3A8B2F1F1972CDC7008669EB /* AHFallingBerriesScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHFallingBerriesScene.h; sourceTree = "<group>"; };
+		3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHFallingBerriesScene.m; sourceTree = "<group>"; };
 		3AAD1E7818ABCDE100E843BA /* AHCamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCamp.h; sourceTree = "<group>"; };
 		3AAD1E7918ABCDE100E843BA /* AHCamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCamp.m; sourceTree = "<group>"; };
 		3AAD1E7B18ABD5A200E843BA /* AHBerries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHBerries.h; sourceTree = "<group>"; };
@@ -125,17 +131,9 @@
 		3A24B81418A942F600E93EBB /* Berries */ = {
 			isa = PBXGroup;
 			children = (
-				3A24B81D18A942F600E93EBB /* AHAppDelegate.h */,
-				3A24B81E18A942F600E93EBB /* AHAppDelegate.m */,
 				3A24B82018A942F600E93EBB /* Main.storyboard */,
-				3A24B84518A9445400E93EBB /* AHMainScene.h */,
-				3A24B84618A9445400E93EBB /* AHMainScene.m */,
-				3AAD1E7B18ABD5A200E843BA /* AHBerries.h */,
-				3AAD1E7C18ABD5A200E843BA /* AHBerries.m */,
-				3AAD1E7818ABCDE100E843BA /* AHCamp.h */,
-				3AAD1E7918ABCDE100E843BA /* AHCamp.m */,
-				3A24B82318A942F600E93EBB /* AHViewController.h */,
-				3A24B82418A942F600E93EBB /* AHViewController.m */,
+				3A8B2F1D1972CC6F008669EB /* User Interface */,
+				3A8B2F1E1972CC90008669EB /* Game */,
 				3A24B82618A942F600E93EBB /* Images.xcassets */,
 				3A24B81518A942F600E93EBB /* Supporting Files */,
 			);
@@ -145,6 +143,8 @@
 		3A24B81518A942F600E93EBB /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3A24B81D18A942F600E93EBB /* AHAppDelegate.h */,
+				3A24B81E18A942F600E93EBB /* AHAppDelegate.m */,
 				3A24B81618A942F600E93EBB /* Berries-Info.plist */,
 				3A24B81718A942F600E93EBB /* InfoPlist.strings */,
 				3A24B81A18A942F600E93EBB /* main.m */,
@@ -169,6 +169,32 @@
 				3A24B83618A942F600E93EBB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3A8B2F1D1972CC6F008669EB /* User Interface */ = {
+			isa = PBXGroup;
+			children = (
+				3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */,
+				3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */,
+				3A24B82318A942F600E93EBB /* AHGameViewController.h */,
+				3A24B82418A942F600E93EBB /* AHGameViewController.m */,
+				3A8B2F1F1972CDC7008669EB /* AHFallingBerriesScene.h */,
+				3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */,
+			);
+			name = "User Interface";
+			sourceTree = "<group>";
+		};
+		3A8B2F1E1972CC90008669EB /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				3A24B84518A9445400E93EBB /* AHMainScene.h */,
+				3A24B84618A9445400E93EBB /* AHMainScene.m */,
+				3AAD1E7B18ABD5A200E843BA /* AHBerries.h */,
+				3AAD1E7C18ABD5A200E843BA /* AHBerries.m */,
+				3AAD1E7818ABCDE100E843BA /* AHCamp.h */,
+				3AAD1E7918ABCDE100E843BA /* AHCamp.m */,
+			);
+			name = Game;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +245,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Adrian Hamelink";
 				TargetAttributes = {
+					3A24B80A18A942F600E93EBB = {
+						DevelopmentTeam = F46D677HSK;
+					};
 					3A24B82B18A942F600E93EBB = {
 						TestTargetID = 3A24B80A18A942F600E93EBB;
 					};
@@ -271,9 +300,11 @@
 			files = (
 				3A24B84718A9445400E93EBB /* AHMainScene.m in Sources */,
 				3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */,
+				3A8B2F211972CDC7008669EB /* AHFallingBerriesScene.m in Sources */,
 				3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */,
 				3A24B81B18A942F600E93EBB /* main.m in Sources */,
-				3A24B82518A942F600E93EBB /* AHViewController.m in Sources */,
+				3A24B82518A942F600E93EBB /* AHGameViewController.m in Sources */,
+				3A8B2F1C1972CB9C008669EB /* AHMainMenuViewController.m in Sources */,
 				3A24B81F18A942F600E93EBB /* AHAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,10 +432,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Berries/Berries-Prefix.pch";
 				INFOPLIST_FILE = "Berries/Berries-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -414,10 +448,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Berries/Berries-Prefix.pch";
 				INFOPLIST_FILE = "Berries/Berries-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
