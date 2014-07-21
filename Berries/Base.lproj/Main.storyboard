@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <deployment version="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
     </dependencies>
     <scenes>
         <!--Main Menu View Controller-->
@@ -13,41 +14,63 @@
                         <viewControllerLayoutGuide type="bottom" id="X8Z-FK-2Mf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P52-IF-l77" customClass="SKView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahG-Ad-46T">
-                                        <rect key="frame" x="129" y="269" width="62" height="30"/>
+                                        <rect key="frame" x="209" y="243" width="62" height="30"/>
                                         <state key="normal" title="Continue">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="209" y="323" width="62" height="30"/>
+                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsF-uL-HaM">
-                                        <rect key="frame" x="122" y="307" width="76" height="30"/>
+                                        <rect key="frame" x="202" y="281" width="76" height="30"/>
                                         <state key="normal" title="New Game">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="202" y="361" width="76" height="30"/>
+                                        </variation>
                                         <connections>
-                                            <segue destination="iqR-lR-agE" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="k3A-pt-n7u"/>
+                                            <action selector="newGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KYV-t5-kQg"/>
+                                            <segue destination="iqR-lR-agE" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="k3A-pt-n7u"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1H-MU-Rpb">
-                                        <rect key="frame" x="133" y="345" width="54" height="30"/>
+                                        <rect key="frame" x="213" y="319" width="54" height="30"/>
                                         <state key="normal" title="Options">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="213" y="399" width="54" height="30"/>
+                                        </variation>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCk-xV-tul">
-                                        <rect key="frame" x="116" y="383" width="88" height="30"/>
+                                        <rect key="frame" x="196" y="357" width="88" height="30"/>
                                         <state key="normal" title="Leaderboard">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="196" y="437" width="88" height="30"/>
+                                        </variation>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NwR-OW-SVf">
+                                        <rect key="frame" x="157" y="83" width="167" height="152"/>
+                                        <variation key="heightClass=regular" fixedFrame="YES">
+                                            <rect key="frame" x="157" y="163" width="167" height="152"/>
+                                        </variation>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <variation key="heightClass=regular" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -58,11 +81,12 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="backgroundView" destination="P52-IF-l77" id="qIc-ts-9jE"/>
+                        <outlet property="imageView" destination="NwR-OW-SVf" id="oCJ-jM-RSt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="352" y="367"/>
+            <point key="canvasLocation" x="447" y="405"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="ygh-2h-O12">
@@ -73,38 +97,51 @@
                         <viewControllerLayoutGuide type="bottom" id="8sf-NX-K7W"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wqj-kz-Mgg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wTK-99-hTM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoJ-7n-GC1">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="22"/>
+                                </textAttributes>
                                 <items>
-                                    <navigationItem title="Title" id="RzH-mb-g7s">
-                                        <barButtonItem key="leftBarButtonItem" title="Item" id="JAr-Zj-uOr"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Item" id="Vy6-Vt-NEB"/>
+                                    <navigationItem title="0" id="Z5C-ye-zoS">
+                                        <barButtonItem key="leftBarButtonItem" title="0:00" id="v0U-EE-Ozm"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="pause" id="C9Y-Pm-AEE">
+                                            <connections>
+                                                <action selector="pause:" destination="iqR-lR-agE" id="iAi-tr-6af"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-kI-qTp" customClass="SKView">
-                                <rect key="frame" x="0.0" y="44" width="320" height="436"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-kI-qTp" customClass="SKView">
+                                <rect key="frame" x="0.0" y="44" width="480" height="436"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OoJ-7n-GC1" secondAttribute="trailing" id="EDZ-Vt-ddP"/>
+                            <constraint firstItem="OoJ-7n-GC1" firstAttribute="leading" secondItem="wqj-kz-Mgg" secondAttribute="leading" id="Ed9-Lt-aEd"/>
+                            <constraint firstItem="OoJ-7n-GC1" firstAttribute="top" secondItem="5SX-gu-aUw" secondAttribute="bottom" id="Fqj-y6-PDX"/>
+                            <constraint firstItem="OoJ-7n-GC1" firstAttribute="top" secondItem="fOx-kI-qTp" secondAttribute="top" constant="-44" id="FvI-Uc-qEj"/>
+                            <constraint firstAttribute="trailing" secondItem="fOx-kI-qTp" secondAttribute="trailing" id="H7N-of-hKb"/>
+                            <constraint firstItem="8sf-NX-K7W" firstAttribute="top" secondItem="fOx-kI-qTp" secondAttribute="bottom" id="fdT-13-Jkq"/>
+                            <constraint firstItem="fOx-kI-qTp" firstAttribute="leading" secondItem="wqj-kz-Mgg" secondAttribute="leading" id="zbd-HR-i0L"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="gameView" destination="fOx-kI-qTp" id="aC8-PO-ylw"/>
-                        <outlet property="navigationBar" destination="wTK-99-hTM" id="snu-RL-uqO"/>
+                        <outlet property="navigationBar" destination="OoJ-7n-GC1" id="q0g-VE-nRo"/>
+                        <outlet property="scoreBar" destination="OoJ-7n-GC1" id="jUQ-tX-Whw"/>
+                        <outlet property="timeItem" destination="v0U-EE-Ozm" id="0Cn-ag-Ovu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeW-jw-pEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="949" y="307"/>
+            <point key="canvasLocation" x="1245" y="301"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
-    </simulatedMetricsContainer>
 </document>

@@ -13,9 +13,7 @@
 		3A24B81918A942F600E93EBB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B81718A942F600E93EBB /* InfoPlist.strings */; };
 		3A24B81B18A942F600E93EBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B81A18A942F600E93EBB /* main.m */; };
 		3A24B81F18A942F600E93EBB /* AHAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B81E18A942F600E93EBB /* AHAppDelegate.m */; };
-		3A24B82218A942F600E93EBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B82018A942F600E93EBB /* Main.storyboard */; };
 		3A24B82518A942F600E93EBB /* AHGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B82418A942F600E93EBB /* AHGameViewController.m */; };
-		3A24B82718A942F600E93EBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B82618A942F600E93EBB /* Images.xcassets */; };
 		3A24B82E18A942F600E93EBB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B82D18A942F600E93EBB /* XCTest.framework */; };
 		3A24B82F18A942F600E93EBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B80E18A942F600E93EBB /* Foundation.framework */; };
 		3A24B83018A942F600E93EBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B81218A942F600E93EBB /* UIKit.framework */; };
@@ -23,10 +21,33 @@
 		3A24B83A18A942F600E93EBB /* BerriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B83918A942F600E93EBB /* BerriesTests.m */; };
 		3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B84318A9438D00E93EBB /* SpriteKit.framework */; };
 		3A24B84718A9445400E93EBB /* AHGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B84618A9445400E93EBB /* AHGameScene.m */; };
+		3A5D3FB5197D92EC000DC52D /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A5D3FB4197D92EC000DC52D /* Storyboard.storyboard */; };
 		3A8B2F1C1972CB9C008669EB /* AHMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */; };
 		3A8B2F211972CDC7008669EB /* AHFallingBerriesScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */; };
 		3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7918ABCDE100E843BA /* AHCamp.m */; };
 		3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7C18ABD5A200E843BA /* AHBerries.m */; };
+		3AD4D906197C05DE0018C028 /* Banana.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8F6197C05DE0018C028 /* Banana.png */; };
+		3AD4D907197C05DE0018C028 /* Banana@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8F7197C05DE0018C028 /* Banana@2x.png */; };
+		3AD4D908197C05DE0018C028 /* BananaGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8F8197C05DE0018C028 /* BananaGrey.png */; };
+		3AD4D909197C05DE0018C028 /* BananaGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8F9197C05DE0018C028 /* BananaGrey@2x.png */; };
+		3AD4D90A197C05DE0018C028 /* Lemon.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8FA197C05DE0018C028 /* Lemon.png */; };
+		3AD4D90B197C05DE0018C028 /* Lemon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8FB197C05DE0018C028 /* Lemon@2x.png */; };
+		3AD4D90C197C05DE0018C028 /* LemonGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8FC197C05DE0018C028 /* LemonGrey.png */; };
+		3AD4D90D197C05DE0018C028 /* LemonGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8FD197C05DE0018C028 /* LemonGrey@2x.png */; };
+		3AD4D90E197C05DE0018C028 /* Orange.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8FE197C05DE0018C028 /* Orange.png */; };
+		3AD4D90F197C05DE0018C028 /* Orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D8FF197C05DE0018C028 /* Orange@2x.png */; };
+		3AD4D910197C05DE0018C028 /* OrangeGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D900197C05DE0018C028 /* OrangeGrey.png */; };
+		3AD4D911197C05DE0018C028 /* OrangeGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D901197C05DE0018C028 /* OrangeGrey@2x.png */; };
+		3AD4D912197C05DE0018C028 /* Strawberry.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D902197C05DE0018C028 /* Strawberry.png */; };
+		3AD4D913197C05DE0018C028 /* Strawberry@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D903197C05DE0018C028 /* Strawberry@2x.png */; };
+		3AD4D914197C05DE0018C028 /* StrawberryGrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D904197C05DE0018C028 /* StrawberryGrey.png */; };
+		3AD4D915197C05DE0018C028 /* StrawberryGrey@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3AD4D905197C05DE0018C028 /* StrawberryGrey@2x.png */; };
+		3AD9B9D919742E950021868D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9D819742E950021868D /* CoreText.framework */; };
+		3AD9B9DB19742E9B0021868D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9DA19742E9B0021868D /* QuartzCore.framework */; };
+		3AD9B9DD19742EA20021868D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9DC19742EA20021868D /* Security.framework */; };
+		3AD9B9DF19742EAA0021868D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9DE19742EAA0021868D /* SystemConfiguration.framework */; };
+		3AD9B9E619742FE70021868D /* HockeySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9E219742FE70021868D /* HockeySDK.framework */; };
+		3AD9B9E819742FE70021868D /* HockeySDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3AD9B9E519742FE70021868D /* HockeySDKResources.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +74,6 @@
 		3A24B82118A942F600E93EBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3A24B82318A942F600E93EBB /* AHGameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AHGameViewController.h; sourceTree = "<group>"; };
 		3A24B82418A942F600E93EBB /* AHGameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AHGameViewController.m; sourceTree = "<group>"; };
-		3A24B82618A942F600E93EBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A24B82C18A942F600E93EBB /* BerriesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BerriesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A24B82D18A942F600E93EBB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		3A24B83518A942F600E93EBB /* BerriesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BerriesTests-Info.plist"; sourceTree = "<group>"; };
@@ -62,6 +82,7 @@
 		3A24B84318A9438D00E93EBB /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3A24B84518A9445400E93EBB /* AHGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHGameScene.h; sourceTree = "<group>"; };
 		3A24B84618A9445400E93EBB /* AHGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHGameScene.m; sourceTree = "<group>"; };
+		3A5D3FB4197D92EC000DC52D /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainMenuViewController.h; sourceTree = "<group>"; };
 		3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainMenuViewController.m; sourceTree = "<group>"; };
 		3A8B2F1F1972CDC7008669EB /* AHFallingBerriesScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHFallingBerriesScene.h; sourceTree = "<group>"; };
@@ -70,6 +91,29 @@
 		3AAD1E7918ABCDE100E843BA /* AHCamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCamp.m; sourceTree = "<group>"; };
 		3AAD1E7B18ABD5A200E843BA /* AHBerries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHBerries.h; sourceTree = "<group>"; };
 		3AAD1E7C18ABD5A200E843BA /* AHBerries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHBerries.m; sourceTree = "<group>"; };
+		3AD4D8F6197C05DE0018C028 /* Banana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Banana.png; sourceTree = "<group>"; };
+		3AD4D8F7197C05DE0018C028 /* Banana@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Banana@2x.png"; sourceTree = "<group>"; };
+		3AD4D8F8197C05DE0018C028 /* BananaGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BananaGrey.png; sourceTree = "<group>"; };
+		3AD4D8F9197C05DE0018C028 /* BananaGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BananaGrey@2x.png"; sourceTree = "<group>"; };
+		3AD4D8FA197C05DE0018C028 /* Lemon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Lemon.png; sourceTree = "<group>"; };
+		3AD4D8FB197C05DE0018C028 /* Lemon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Lemon@2x.png"; sourceTree = "<group>"; };
+		3AD4D8FC197C05DE0018C028 /* LemonGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LemonGrey.png; sourceTree = "<group>"; };
+		3AD4D8FD197C05DE0018C028 /* LemonGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "LemonGrey@2x.png"; sourceTree = "<group>"; };
+		3AD4D8FE197C05DE0018C028 /* Orange.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Orange.png; sourceTree = "<group>"; };
+		3AD4D8FF197C05DE0018C028 /* Orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Orange@2x.png"; sourceTree = "<group>"; };
+		3AD4D900197C05DE0018C028 /* OrangeGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = OrangeGrey.png; sourceTree = "<group>"; };
+		3AD4D901197C05DE0018C028 /* OrangeGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OrangeGrey@2x.png"; sourceTree = "<group>"; };
+		3AD4D902197C05DE0018C028 /* Strawberry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Strawberry.png; sourceTree = "<group>"; };
+		3AD4D903197C05DE0018C028 /* Strawberry@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Strawberry@2x.png"; sourceTree = "<group>"; };
+		3AD4D904197C05DE0018C028 /* StrawberryGrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = StrawberryGrey.png; sourceTree = "<group>"; };
+		3AD4D905197C05DE0018C028 /* StrawberryGrey@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StrawberryGrey@2x.png"; sourceTree = "<group>"; };
+		3AD9B9D819742E950021868D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		3AD9B9DA19742E9B0021868D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		3AD9B9DC19742EA20021868D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		3AD9B9DE19742EAA0021868D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		3AD9B9E219742FE70021868D /* HockeySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HockeySDK.framework; sourceTree = "<group>"; };
+		3AD9B9E419742FE70021868D /* HockeySDK.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = HockeySDK.xcconfig; sourceTree = "<group>"; };
+		3AD9B9E519742FE70021868D /* HockeySDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = HockeySDKResources.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,9 +121,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3AD9B9DF19742EAA0021868D /* SystemConfiguration.framework in Frameworks */,
+				3AD9B9DD19742EA20021868D /* Security.framework in Frameworks */,
+				3AD9B9DB19742E9B0021868D /* QuartzCore.framework in Frameworks */,
+				3AD9B9D919742E950021868D /* CoreText.framework in Frameworks */,
 				3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */,
 				3A24B81118A942F600E93EBB /* CoreGraphics.framework in Frameworks */,
 				3A24B81318A942F600E93EBB /* UIKit.framework in Frameworks */,
+				3AD9B9E619742FE70021868D /* HockeySDK.framework in Frameworks */,
 				3A24B80F18A942F600E93EBB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -119,6 +168,11 @@
 		3A24B80D18A942F600E93EBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3AD9B9E119742FE70021868D /* HockeySDK.embeddedframework */,
+				3AD9B9DE19742EAA0021868D /* SystemConfiguration.framework */,
+				3AD9B9DC19742EA20021868D /* Security.framework */,
+				3AD9B9DA19742E9B0021868D /* QuartzCore.framework */,
+				3AD9B9D819742E950021868D /* CoreText.framework */,
 				3A24B84318A9438D00E93EBB /* SpriteKit.framework */,
 				3A24B80E18A942F600E93EBB /* Foundation.framework */,
 				3A24B81018A942F600E93EBB /* CoreGraphics.framework */,
@@ -131,10 +185,10 @@
 		3A24B81418A942F600E93EBB /* Berries */ = {
 			isa = PBXGroup;
 			children = (
+				3A5D3FB4197D92EC000DC52D /* Storyboard.storyboard */,
 				3A24B82018A942F600E93EBB /* Main.storyboard */,
 				3A8B2F1D1972CC6F008669EB /* User Interface */,
 				3A8B2F1E1972CC90008669EB /* Game */,
-				3A24B82618A942F600E93EBB /* Images.xcassets */,
 				3A24B81518A942F600E93EBB /* Supporting Files */,
 			);
 			path = Berries;
@@ -149,6 +203,22 @@
 				3A24B81718A942F600E93EBB /* InfoPlist.strings */,
 				3A24B81A18A942F600E93EBB /* main.m */,
 				3A24B81C18A942F600E93EBB /* Berries-Prefix.pch */,
+				3AD4D8F6197C05DE0018C028 /* Banana.png */,
+				3AD4D8F7197C05DE0018C028 /* Banana@2x.png */,
+				3AD4D8F8197C05DE0018C028 /* BananaGrey.png */,
+				3AD4D8F9197C05DE0018C028 /* BananaGrey@2x.png */,
+				3AD4D8FA197C05DE0018C028 /* Lemon.png */,
+				3AD4D8FB197C05DE0018C028 /* Lemon@2x.png */,
+				3AD4D8FC197C05DE0018C028 /* LemonGrey.png */,
+				3AD4D8FD197C05DE0018C028 /* LemonGrey@2x.png */,
+				3AD4D8FE197C05DE0018C028 /* Orange.png */,
+				3AD4D8FF197C05DE0018C028 /* Orange@2x.png */,
+				3AD4D900197C05DE0018C028 /* OrangeGrey.png */,
+				3AD4D901197C05DE0018C028 /* OrangeGrey@2x.png */,
+				3AD4D902197C05DE0018C028 /* Strawberry.png */,
+				3AD4D903197C05DE0018C028 /* Strawberry@2x.png */,
+				3AD4D904197C05DE0018C028 /* StrawberryGrey.png */,
+				3AD4D905197C05DE0018C028 /* StrawberryGrey@2x.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -197,6 +267,25 @@
 			name = Game;
 			sourceTree = "<group>";
 		};
+		3AD9B9E119742FE70021868D /* HockeySDK.embeddedframework */ = {
+			isa = PBXGroup;
+			children = (
+				3AD9B9E219742FE70021868D /* HockeySDK.framework */,
+				3AD9B9E319742FE70021868D /* Resources */,
+			);
+			name = HockeySDK.embeddedframework;
+			path = "Berries/HockeySDK-iOS/HockeySDK.embeddedframework";
+			sourceTree = "<group>";
+		};
+		3AD9B9E319742FE70021868D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3AD9B9E419742FE70021868D /* HockeySDK.xcconfig */,
+				3AD9B9E519742FE70021868D /* HockeySDKResources.bundle */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,6 +296,7 @@
 				3A24B80718A942F600E93EBB /* Sources */,
 				3A24B80818A942F600E93EBB /* Frameworks */,
 				3A24B80918A942F600E93EBB /* Resources */,
+				3AD9B9E019742FB60021868D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -242,7 +332,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = AH;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = "Adrian Hamelink";
 				TargetAttributes = {
 					3A24B80A18A942F600E93EBB = {
@@ -277,9 +367,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A24B82718A942F600E93EBB /* Images.xcassets in Resources */,
+				3AD4D915197C05DE0018C028 /* StrawberryGrey@2x.png in Resources */,
+				3AD4D910197C05DE0018C028 /* OrangeGrey.png in Resources */,
+				3AD4D911197C05DE0018C028 /* OrangeGrey@2x.png in Resources */,
+				3A5D3FB5197D92EC000DC52D /* Storyboard.storyboard in Resources */,
+				3AD4D90A197C05DE0018C028 /* Lemon.png in Resources */,
+				3AD4D914197C05DE0018C028 /* StrawberryGrey.png in Resources */,
+				3AD4D913197C05DE0018C028 /* Strawberry@2x.png in Resources */,
+				3AD4D912197C05DE0018C028 /* Strawberry.png in Resources */,
+				3AD4D909197C05DE0018C028 /* BananaGrey@2x.png in Resources */,
+				3AD4D90E197C05DE0018C028 /* Orange.png in Resources */,
+				3AD9B9E819742FE70021868D /* HockeySDKResources.bundle in Resources */,
 				3A24B81918A942F600E93EBB /* InfoPlist.strings in Resources */,
-				3A24B82218A942F600E93EBB /* Main.storyboard in Resources */,
+				3AD4D90B197C05DE0018C028 /* Lemon@2x.png in Resources */,
+				3AD4D90F197C05DE0018C028 /* Orange@2x.png in Resources */,
+				3AD4D90D197C05DE0018C028 /* LemonGrey@2x.png in Resources */,
+				3AD4D906197C05DE0018C028 /* Banana.png in Resources */,
+				3AD4D907197C05DE0018C028 /* Banana@2x.png in Resources */,
+				3AD4D908197C05DE0018C028 /* BananaGrey.png in Resources */,
+				3AD4D90C197C05DE0018C028 /* LemonGrey.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +398,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3AD9B9E019742FB60021868D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "FILE=\"${SRCROOT}/Berries/HockeySDK-iOS/BuildAgent\"\nif [ -f \"$FILE\" ]; then\n    \"$FILE\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A24B80718A942F600E93EBB /* Sources */ = {
@@ -434,11 +556,18 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Berries/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/Berries/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Berries/Berries-Prefix.pch";
 				INFOPLIST_FILE = "Berries/Berries-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -450,11 +579,18 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Berries/HockeySDK.embeddedframework",
+					"$(PROJECT_DIR)/Berries/HockeySDK-iOS/HockeySDK.embeddedframework",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Berries/Berries-Prefix.pch";
 				INFOPLIST_FILE = "Berries/Berries-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

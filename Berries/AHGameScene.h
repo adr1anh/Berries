@@ -14,6 +14,15 @@ typedef NS_ENUM(NSUInteger, AHDifficulty) {
     AHDifficultyHard = 4,           // 4 camps: top left, top right, bottom left, bottom right
 };
 
+@protocol AHGameSceneDelegate <SKSceneDelegate>
+@optional
+- (void)scoreDidChange:(NSUInteger)score;
+- (void)gameEndedAt:(NSDate *)time after:(NSUInteger)timeElapsed andScore:(NSUInteger)score;
+- (void)timeDidChange:(NSUInteger)elapsed;
+@end
+
 @interface AHGameScene : SKScene
+
+@property (nonatomic, weak) id <AHGameSceneDelegate> gameDelegate;
 
 @end

@@ -11,10 +11,21 @@
 
 @interface AHMainMenuViewController ()
 @property (strong, nonatomic) IBOutlet SKView *backgroundView;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) SKScene *backgroundScene;
 @end
 
 @implementation AHMainMenuViewController
+- (IBAction)newGame:(id)sender {
+    self.backgroundScene.paused = YES;
+}
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
+}
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

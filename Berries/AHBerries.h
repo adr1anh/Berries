@@ -9,6 +9,7 @@
 #import <SpriteKit/SpriteKit.h>
 
 typedef NS_ENUM(NSUInteger, AHBerryType) {
+    AHBerryTypeUnknown = -1,
     AHBerryTypeOrange = 0,
     AHBerryTypeStrawberry,
     AHBerryTypeBanana,
@@ -24,6 +25,6 @@ typedef NS_ENUM(NSUInteger, AHBerryType) {
 - (instancetype)initWithBerryType:(AHBerryType)type;
 + (instancetype)spriteNodeWithBerryType:(AHBerryType)type;
 + (SKColor *)colorForBerryType:(AHBerryType)type;
-+ (NSString *)imageNameForType:(AHBerryType)type;
++ (NSString *)nameForType:(AHBerryType)type;
 
 @end

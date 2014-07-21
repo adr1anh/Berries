@@ -12,7 +12,8 @@
 
 - (instancetype)initWithBerryType:(AHBerryType)type
 {
-    self = [super initWithImageNamed:[AHBerries imageNameForType:type]];
+    //Need hack for iOS 7
+    self = [super initWithImageNamed:[[AHBerries nameForType:type] stringByAppendingString:@".png"]];
     if (self) {
         self.color = [AHBerries colorForBerryType:type];
         self.success = NO;
@@ -28,6 +29,7 @@
 
 #define SKColorFromRGB(rgbValue) [SKColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
+//Hardcoded colors for the sprites
 + (SKColor *)colorForBerryType:(AHBerryType)type {
     switch (type) {
         case AHBerryTypeBanana: {
@@ -45,10 +47,14 @@
         case AHBerryTypeOrange: {
             return SKColorFromRGB(0xffc000);
         }
+        default: {
+            return [SKColor grayColor];
+        }
     }
 }
 
-+ (NSString *)imageNameForType:(AHBerryType)type
+//Name for different AHBerryTypes
++ (NSString *)nameForType:(AHBerryType)type
 {
     switch (type) {
         case AHBerryTypeBanana: {
@@ -65,6 +71,9 @@
             
         case AHBerryTypeOrange: {
             return @"Orange";
+        }
+        case AHBerryTypeUnknown: {
+            return nil;
         }
     }
 }

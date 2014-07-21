@@ -10,8 +10,9 @@
 #import "AHBerries.h"
 
 @interface AHCamp : SKSpriteNode
-//@property (strong, nonatomic) UIColor *color;
 @property AHBerryType berryType;
++ (instancetype)spriteNodeWithSize:(CGSize)size;
 + (instancetype)spriteNodeWithBerryType:(AHBerryType)type size:(CGSize)size;
+- (instancetype)initWithBerrySize:(CGSize)size;
 - (instancetype)initWithBerryType:(AHBerryType)type size:(CGSize)size;
 @end
