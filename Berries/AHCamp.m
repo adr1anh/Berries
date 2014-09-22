@@ -31,18 +31,22 @@
 //Designated Initializer
 - (instancetype)initWithBerryType:(AHBerryType)type size:(CGSize)size
 {
-    self = [super initWithColor:[AHBerries colorForBerryType:type] size:size];
+    if ([AHBerries nameForType:type]) {
+        self = [super initWithImageNamed:[[AHBerries nameForType:type] stringByAppendingString:@"Camp"]];
+    } else {
+        self = [super initWithColor:[AHBerries colorForBerryType:type] size:size];
+    }
     if (self) {
         //Name the camp
         self.name = [[AHBerries nameForType:type] stringByAppendingString:@"Camp"];
         
         //Check if not unknown
-        if (type != AHBerryTypeUnknown) {
-            //Add a greyscale fruit as background
-            SKSpriteNode *greyFruit = [SKSpriteNode spriteNodeWithImageNamed:[[AHBerries nameForType:type] stringByAppendingString:@"Grey"]];
-            greyFruit.position = CGPointZero;
-            [self addChild:greyFruit];
-        }
+//        if (type != AHBerryTypeUnknown) {
+//            //Add a greyscale fruit as background
+//            SKSpriteNode *greyFruit = [SKSpriteNode spriteNodeWithImageNamed:[[AHBerries nameForType:type] stringByAppendingString:@"Grey"]];
+//            greyFruit.position = CGPointZero;
+//            [self addChild:greyFruit];
+//        }
         
         //What berry type should this camp accept
         self.berryType = type;

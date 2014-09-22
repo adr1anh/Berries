@@ -19,7 +19,6 @@
 {
     if (self = [super initWithSize:size]) {
         [self createScene];
-        self.backgroundColor = [UIColor greenColor];
     }
     return self;
 }
@@ -38,6 +37,12 @@
                                         arc4random_uniform(self.size.height));
         [self addChild:newBerry];
     }
+}
+
+- (CGFloat)velocity
+{
+    if (!_velocity) _velocity = 1;
+    return _velocity;
 }
 
 - (void)addRandomFallingBerry:(NSTimer *)timer
@@ -61,7 +66,9 @@
     berry.yScale = scale;
     berry.xScale = scale;
     
-    SKAction *moveAction = [SKAction sequence:@[[SKAction moveToY:0 duration:10 + arc4random_uniform(10)], [SKAction removeFromParent]]];
+    CGFloat duration = (10 + arc4random_uniform(10)) * self.velocity;
+    SKAction *moveAction = [SKAction sequence:@[[SKAction moveToY:0 duration:duration],
+                                                [SKAction removeFromParent]]];
     [berry runAction:moveAction];
     
     return berry;

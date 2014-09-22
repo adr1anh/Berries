@@ -137,22 +137,23 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
             case AHDifficultyEasy:
             {
                 CGFloat campHeight = self.size.height / 3;
-                CGFloat campWidth = self.size.width;
+                CGFloat campWidth = self.size.width / 2;
                 CGSize campSize = CGSizeMake(campWidth, campHeight);
                 
-                AHCamp *orange = [AHCamp spriteNodeWithBerryType:AHBerryTypeOrange size:campSize];
-                orange.position = CGPointMake(self.size.width / 2,
-                                              self.size.height - campHeight / 2);
+                AHCamp *banana = [AHCamp spriteNodeWithBerryType:AHBerryTypeBanana size:campSize];
+                banana.position = CGPointMake(self.size.width / 4,
+                                              self.size.height - banana.size.height / 2);
                 
                 AHCamp *strawberry = [AHCamp spriteNodeWithBerryType:AHBerryTypeStrawberry size:campSize];
-                strawberry.position = CGPointMake(self.size.width / 2,
-                                                  self.size.height - 2 * campHeight - campHeight / 2);
+                strawberry.position = CGPointMake(3 * self.size.width / 4,
+                                                  self.size.height - strawberry.size.height / 2);
                 
-                AHCamp *greyCamp = [AHCamp spriteNodeWithSize:campSize];
+                AHCamp *greyCamp = [AHCamp spriteNodeWithSize:CGSizeMake(self.size.width, self.size.height - strawberry.size.height)];
                 greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - campHeight - campHeight / 2);
+                                                self.size.height - strawberry.size.height - greyCamp.size.height / 2);
+                greyCamp.color = [SKColor colorWithRed:133.0/255 green:196.0/255 blue:50.0/255 alpha:1];
                 
-                _camps = @[greyCamp, orange, strawberry];
+                _camps = @[greyCamp, banana, strawberry];
                 break;
             }
             case AHDifficultyMedium:

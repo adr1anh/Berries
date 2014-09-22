@@ -11,6 +11,4 @@
 
 @interface AHGameViewController : UIViewController <UIAlertViewDelegate, AHGameSceneDelegate>
 @property (strong, nonatomic) IBOutlet UINavigationBar *scoreBar;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *timeItem;
-
 @end

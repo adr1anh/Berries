@@ -12,7 +12,7 @@
 @interface AHMainMenuViewController ()
 @property (strong, nonatomic) IBOutlet SKView *backgroundView;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
-@property (strong, nonatomic) SKScene *backgroundScene;
+@property (strong, nonatomic) AHFallingBerriesScene *backgroundScene;
 @end
 
 @implementation AHMainMenuViewController
@@ -23,8 +23,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    NSLog(@"%@", NSStringFromCGRect(self.view.frame));
 }
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -43,6 +41,7 @@
     self.backgroundScene = [[AHFallingBerriesScene alloc] initWithSize:self.backgroundView.frame.size];
     [self.backgroundView presentScene:self.backgroundScene];
     self.backgroundView.showsFPS = YES;
+    self.backgroundScene.backgroundColor = [UIColor colorWithRed:0.25 green:0.7 blue:1/3 alpha:1];
 }
 
 - (void)viewDidLoad

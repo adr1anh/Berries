@@ -9,5 +9,5 @@
 #import <SpriteKit/SpriteKit.h>
 
 @interface AHFallingBerriesScene : SKScene
-
+@property (nonatomic) CGFloat velocity;
 @end
