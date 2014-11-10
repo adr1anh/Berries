@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
-    },
-    {
       "idiom" : "universal",
       "scale" : "1x",
-      "filename" : "Strawberry.png"
+      "filename" : "StrawberryOriginal.png"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "Strawberry@2x.png"
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

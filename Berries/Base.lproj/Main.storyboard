@@ -1,9 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <deployment version="1808" defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment version="1808" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="KGSecondChancesSolid.ttf">
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Main Menu View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -14,76 +31,66 @@
                         <viewControllerLayoutGuide type="bottom" id="X8Z-FK-2Mf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="P52-IF-l77" customClass="SKView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <subviews>
-                                    <imageView clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Banana" translatesAutoresizingMaskIntoConstraints="NO" id="NwR-OW-SVf">
-                                        <rect key="frame" x="77" y="81" width="167" height="152"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsF-uL-HaM">
-                                        <rect key="frame" x="116" y="278" width="89" height="31"/>
-                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
-                                        <state key="normal" title="New Game">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="newGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KYV-t5-kQg"/>
-                                            <segue destination="iqR-lR-agE" kind="modal" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="k3A-pt-n7u"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1H-MU-Rpb">
-                                        <rect key="frame" x="129" y="395" width="62" height="31"/>
-                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
-                                        <state key="normal" title="Options">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="xZM-BT-EXR" kind="modal" id="myE-dE-xya"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCk-xV-tul">
-                                        <rect key="frame" x="106" y="356" width="108" height="31"/>
-                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
-                                        <state key="normal" title="Leaderboard">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahG-Ad-46T">
-                                        <rect key="frame" x="125" y="241" width="71" height="36"/>
-                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
-                                        <state key="normal" title="Continue">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ag-jJ-8aK">
-                                        <rect key="frame" x="114" y="317" width="93" height="31"/>
-                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
-                                        <state key="normal" title="Multiplayer">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.29019609089999998" green="0.73333334920000004" blue="0.078431375319999996" alpha="1" colorSpace="deviceRGB"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCk-xV-tul" userLabel="Leaderboard">
+                                <rect key="frame" x="252" y="345" width="96" height="44"/>
+                                <state key="normal" image="Leaderboard">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showLeaderboard:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="n57-aG-tGU"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsF-uL-HaM" userLabel="Play">
+                                <rect key="frame" x="281" y="275" width="38" height="50"/>
+                                <state key="normal" image="Play">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="iqR-lR-agE" kind="presentation" identifier="game" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="k3A-pt-n7u"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-3Q-cH1">
+                                <rect key="frame" x="179" y="135" width="243" height="80"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="63"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBY-7K-EHZ" userLabel="Credits">
+                                <rect key="frame" x="277" y="409" width="46" height="44"/>
+                                <state key="normal" image="Credits">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="r6F-Fm-3rk" kind="presentation" identifier="credits" id="Myc-Nt-QOQ"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="tBY-7K-EHZ" secondAttribute="centerX" id="6io-Ul-XhM"/>
+                            <constraint firstItem="MCk-xV-tul" firstAttribute="top" secondItem="DsF-uL-HaM" secondAttribute="bottom" constant="20" id="LzX-5b-PbO"/>
+                            <constraint firstItem="tBY-7K-EHZ" firstAttribute="top" secondItem="MCk-xV-tul" secondAttribute="bottom" constant="20" id="OYX-VN-Kqc"/>
+                            <constraint firstItem="DsF-uL-HaM" firstAttribute="top" secondItem="vOn-3Q-cH1" secondAttribute="bottom" constant="60" id="VTG-tI-JF6"/>
+                            <constraint firstItem="DsF-uL-HaM" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="dMJ-5E-fOU"/>
+                            <constraint firstAttribute="centerY" secondItem="DsF-uL-HaM" secondAttribute="centerY" constant="0.5" id="dvg-mk-ovN"/>
+                            <constraint firstAttribute="centerX" secondItem="vOn-3Q-cH1" secondAttribute="centerX" id="kUD-a7-ErS"/>
+                            <constraint firstItem="MCk-xV-tul" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ttk-IC-ZG6"/>
+                        </constraints>
                     </view>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <outlet property="backgroundView" destination="P52-IF-l77" id="qIc-ts-9jE"/>
-                        <outlet property="imageView" destination="NwR-OW-SVf" id="oCJ-jM-RSt"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="383"/>
+            <point key="canvasLocation" x="557" y="404"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="ygh-2h-O12">
@@ -94,134 +101,171 @@
                         <viewControllerLayoutGuide type="bottom" id="8sf-NX-K7W"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wqj-kz-Mgg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OoJ-7n-GC1">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="0" id="Z5C-ye-zoS">
-                                        <barButtonItem key="leftBarButtonItem" id="v0U-EE-Ozm" customClass="AHLabelBarButtonItem"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="pause" id="C9Y-Pm-AEE">
-                                            <connections>
-                                                <action selector="pause:" destination="iqR-lR-agE" id="iAi-tr-6af"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fOx-kI-qTp" customClass="SKView">
-                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwC-nO-BW8" userLabel="Score Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuD-js-ebE" userLabel="Time Label">
+                                        <rect key="frame" x="20" y="11" width="49" height="28"/>
+                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrd-tL-3aI" userLabel="Score Label">
+                                        <rect key="frame" x="293" y="11" width="15" height="28"/>
+                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.2823529541" green="0.49803924560000001" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="1Mo-0Z-y8y"/>
+                                    <constraint firstItem="HuD-js-ebE" firstAttribute="leading" secondItem="UwC-nO-BW8" secondAttribute="leading" constant="20" symbolic="YES" id="KDl-6W-N6j"/>
+                                    <constraint firstItem="zrd-tL-3aI" firstAttribute="centerX" secondItem="UwC-nO-BW8" secondAttribute="centerX" id="ped-xa-JqK"/>
+                                    <constraint firstItem="HuD-js-ebE" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="zMm-7K-mnS"/>
+                                    <constraint firstItem="zrd-tL-3aI" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="zgt-Kh-kJX"/>
+                                </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Seperator" translatesAutoresizingMaskIntoConstraints="NO" id="JVv-qD-jSY">
+                                <rect key="frame" x="0.0" y="44" width="600" height="12"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="12" id="k5y-ge-b3v"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="OoJ-7n-GC1" secondAttribute="trailing" id="EDZ-Vt-ddP"/>
-                            <constraint firstItem="OoJ-7n-GC1" firstAttribute="leading" secondItem="wqj-kz-Mgg" secondAttribute="leading" id="Ed9-Lt-aEd"/>
-                            <constraint firstItem="OoJ-7n-GC1" firstAttribute="top" secondItem="5SX-gu-aUw" secondAttribute="bottom" id="Fqj-y6-PDX"/>
-                            <constraint firstItem="OoJ-7n-GC1" firstAttribute="top" secondItem="fOx-kI-qTp" secondAttribute="top" constant="-44" id="FvI-Uc-qEj"/>
-                            <constraint firstAttribute="trailing" secondItem="fOx-kI-qTp" secondAttribute="trailing" id="H7N-of-hKb"/>
-                            <constraint firstItem="8sf-NX-K7W" firstAttribute="top" secondItem="fOx-kI-qTp" secondAttribute="bottom" id="fdT-13-Jkq"/>
-                            <constraint firstItem="fOx-kI-qTp" firstAttribute="leading" secondItem="wqj-kz-Mgg" secondAttribute="leading" id="zbd-HR-i0L"/>
+                            <constraint firstItem="JVv-qD-jSY" firstAttribute="leading" secondItem="UwC-nO-BW8" secondAttribute="leading" id="8gA-4S-thk"/>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="leading" secondItem="wqj-kz-Mgg" secondAttribute="leading" id="MDD-Xf-BbF"/>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="top" secondItem="5SX-gu-aUw" secondAttribute="top" id="WKu-gS-pf5"/>
+                            <constraint firstItem="JVv-qD-jSY" firstAttribute="width" secondItem="UwC-nO-BW8" secondAttribute="width" id="X7O-Xc-KMa"/>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="width" secondItem="wqj-kz-Mgg" secondAttribute="width" id="sgs-YV-xed"/>
+                            <constraint firstItem="JVv-qD-jSY" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="bottom" id="w5w-rg-VH2"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="8sz-iL-Wia"/>
                     <connections>
-                        <outlet property="gameView" destination="fOx-kI-qTp" id="aC8-PO-ylw"/>
-                        <outlet property="navigationBar" destination="OoJ-7n-GC1" id="q0g-VE-nRo"/>
-                        <outlet property="scoreBar" destination="OoJ-7n-GC1" id="jUQ-tX-Whw"/>
-                        <outlet property="timeItem" destination="v0U-EE-Ozm" id="0Cn-ag-Ovu"/>
+                        <outlet property="scoreBarView" destination="UwC-nO-BW8" id="9Dk-U3-7sg"/>
+                        <outlet property="scoreLabel" destination="zrd-tL-3aI" id="ZIb-Hg-txT"/>
+                        <outlet property="timeLabel" destination="HuD-js-ebE" id="cHP-xf-6Nn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OeW-jw-pEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="383"/>
+            <point key="canvasLocation" x="1208" y="404"/>
         </scene>
-        <!--Options View Controller-->
-        <scene sceneID="kg6-tH-XTk">
+        <!--Menu View Controller-->
+        <scene sceneID="wN8-4t-ueQ">
             <objects>
-                <viewController id="xZM-BT-EXR" customClass="AHOptionsViewController" sceneMemberID="viewController">
+                <viewController id="r6F-Fm-3rk" customClass="AHMenuViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="a5C-yC-L0Q"/>
-                        <viewControllerLayoutGuide type="bottom" id="beu-Wt-Mt0"/>
+                        <viewControllerLayoutGuide type="top" id="qOu-j4-9FO"/>
+                        <viewControllerLayoutGuide type="bottom" id="jrf-2B-Qbq"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rcI-4G-7xz" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <view key="view" contentMode="scaleToFill" id="tMW-a0-lDd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sound Effects" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hsf-og-7Jt">
-                                <rect key="frame" x="16" y="231" width="231" height="31"/>
-                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Difficulty" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L4s-7P-01b">
-                                <rect key="frame" x="16" y="270" width="118" height="28"/>
-                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show Help" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gWe-uj-Ln2">
-                                <rect key="frame" x="16" y="306" width="231" height="31"/>
-                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j9d-71-sUU">
-                                <rect key="frame" x="255" y="231" width="51" height="31"/>
-                            </switch>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="GmP-zS-txd">
-                                <rect key="frame" x="142" y="270" width="162" height="29"/>
-                                <segments>
-                                    <segment title="Easy"/>
-                                    <segment title="Normal"/>
-                                    <segment title="Hard"/>
-                                </segments>
-                            </segmentedControl>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l65-2W-Nbb">
-                                <rect key="frame" x="255" y="306" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="OPTIONS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vPM-Is-HEG">
-                                <rect key="frame" x="109" y="106" width="111" height="32"/>
-                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="25"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MTo-AP-sgQ">
-                                <rect key="frame" x="60" y="373" width="67" height="43"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hja-XO-TZq">
+                                <rect key="frame" x="267" y="549" width="67" height="43"/>
                                 <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="24"/>
                                 <state key="normal" title="BACK">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissSelf:" destination="r6F-Fm-3rk" eventType="touchUpInside" id="ZYt-j5-ol2"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8ez-CR-7nA">
-                                <rect key="frame" x="180" y="373" width="97" height="43"/>
-                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="24"/>
-                                <state key="normal" title="CREDITS">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kR7-TQ-hnM">
+                                <rect key="frame" x="224" y="8" width="153" height="63"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="40"/>
+                                <state key="normal" title="Credits">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="dismissSelf:" destination="r6F-Fm-3rk" eventType="touchUpInside" id="cfA-Va-7IJ"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Development" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="739-ow-KiE">
+                                <rect key="frame" x="222" y="177" width="157" height="28"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2014 Adrian Hamelink" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2F0-hU-LeM">
+                                <rect key="frame" x="188" y="213" width="225" height="23"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graphics" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEV-3c-MFo">
+                                <rect key="frame" x="247" y="286" width="107" height="28"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Font" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2uV-N7-RJr">
+                                <rect key="frame" x="276" y="395" width="49" height="28"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KG Second Chances" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gBP-9O-ZP2">
+                                <rect key="frame" x="206" y="431" width="189" height="23"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2014 Kimberly Geswein Fonts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jjs-Jl-Vm6">
+                                <rect key="frame" x="154" y="462" width="293" height="23"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© 2014 Leonard Rimensberger" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vhs-y7-Fjh">
+                                <rect key="frame" x="157" y="322" width="286" height="23"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.29019609093666077" green="0.73333334922790527" blue="0.078431375324726105" alpha="1" colorSpace="deviceRGB"/>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="739-ow-KiE" secondAttribute="centerX" id="4ab-TE-9eY"/>
+                            <constraint firstItem="gBP-9O-ZP2" firstAttribute="top" secondItem="2uV-N7-RJr" secondAttribute="bottom" constant="8" symbolic="YES" id="5UK-Zl-yA4"/>
+                            <constraint firstAttribute="centerX" secondItem="vhs-y7-Fjh" secondAttribute="centerX" id="8hl-kZ-C1x"/>
+                            <constraint firstItem="wEV-3c-MFo" firstAttribute="top" secondItem="2F0-hU-LeM" secondAttribute="bottom" constant="50" id="ANN-zX-tQW"/>
+                            <constraint firstAttribute="centerX" secondItem="wEV-3c-MFo" secondAttribute="centerX" id="B8V-ep-JcP"/>
+                            <constraint firstAttribute="centerX" secondItem="2uV-N7-RJr" secondAttribute="centerX" id="KqR-E3-BwS"/>
+                            <constraint firstItem="2uV-N7-RJr" firstAttribute="top" secondItem="vhs-y7-Fjh" secondAttribute="bottom" constant="50" id="MFY-Qe-J6r"/>
+                            <constraint firstItem="jrf-2B-Qbq" firstAttribute="top" secondItem="hja-XO-TZq" secondAttribute="bottom" constant="8" symbolic="YES" id="UIQ-Ls-KiC"/>
+                            <constraint firstItem="vhs-y7-Fjh" firstAttribute="top" secondItem="wEV-3c-MFo" secondAttribute="bottom" constant="8" symbolic="YES" id="Wy3-Sa-Glj"/>
+                            <constraint firstAttribute="centerX" secondItem="kR7-TQ-hnM" secondAttribute="centerX" id="Yrd-hQ-Etn"/>
+                            <constraint firstAttribute="centerX" secondItem="jjs-Jl-Vm6" secondAttribute="centerX" id="ZkB-p2-6Tl"/>
+                            <constraint firstAttribute="centerX" secondItem="2F0-hU-LeM" secondAttribute="centerX" id="fh1-tp-svY"/>
+                            <constraint firstItem="jjs-Jl-Vm6" firstAttribute="top" secondItem="gBP-9O-ZP2" secondAttribute="bottom" constant="8" symbolic="YES" id="iKO-8z-naT"/>
+                            <constraint firstAttribute="centerY" secondItem="wEV-3c-MFo" secondAttribute="centerY" id="jFu-Yz-ABJ"/>
+                            <constraint firstItem="hja-XO-TZq" firstAttribute="centerX" secondItem="tMW-a0-lDd" secondAttribute="centerX" id="jel-No-qi0"/>
+                            <constraint firstAttribute="centerX" secondItem="gBP-9O-ZP2" secondAttribute="centerX" id="lYe-Ia-XJ8"/>
+                            <constraint firstItem="2F0-hU-LeM" firstAttribute="top" secondItem="739-ow-KiE" secondAttribute="bottom" constant="8" symbolic="YES" id="pLG-gZ-bt6"/>
+                            <constraint firstItem="kR7-TQ-hnM" firstAttribute="top" secondItem="qOu-j4-9FO" secondAttribute="bottom" constant="8" symbolic="YES" id="wlh-FO-XnE"/>
+                        </constraints>
                     </view>
-                    <connections>
-                        <outlet property="backgroundView" destination="rcI-4G-7xz" id="X1U-uQ-p4A"/>
-                    </connections>
+                    <navigationItem key="navigationItem" id="53b-SJ-g1b"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="E79-Gt-WUs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcu-ds-aKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="1087"/>
+            <point key="canvasLocation" x="160" y="1157"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Banana" width="45" height="42"/>
+        <image name="Credits" width="46" height="44"/>
+        <image name="Leaderboard" width="96" height="44"/>
+        <image name="Play" width="38" height="50"/>
+        <image name="Seperator" width="8" height="12"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

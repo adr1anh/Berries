@@ -7,10 +7,11 @@
 //
 
 #import "AHFallingBerriesScene.h"
-#import "AHBerries.h"
 
 @interface AHFallingBerriesScene ()
+
 @property (nonatomic, strong) NSTimer *timer;
+
 @end
 
 @implementation AHFallingBerriesScene
@@ -25,49 +26,55 @@
 
 - (void)createScene
 {
-    //Timer for random falling berries
+    //fire timer every 0.75 seconds
     self.timer = [NSTimer scheduledTimerWithTimeInterval:.75
                                                   target:self
                                                 selector:@selector(addRandomFallingBerry:)
                                                 userInfo:nil
                                                  repeats:YES];
-    for (int i = 0; i < 10; i++) {
-        AHBerries *newBerry = [self newFallingBerry];
-        newBerry.position = CGPointMake(arc4random_uniform(self.size.width),
-                                        arc4random_uniform(self.size.height));
+    
+    //add some berries at creation
+    for (int i = 0; i < 20; i++) {
+        AHBerrySprite *newBerry = [self newFallingBerry];
+        
+        //random position on screen
+        newBerry.position = CGPointMake(arc4random_uniform(self.size.width - newBerry.size.width / 2) + newBerry.size.width / 4,
+                                        arc4random_uniform(self.size.height - newBerry.size.height / 2) + newBerry.size.height / 4);
         [self addChild:newBerry];
     }
-}
-
-- (CGFloat)velocity
-{
-    if (!_velocity) _velocity = 1;
-    return _velocity;
 }
 
 - (void)addRandomFallingBerry:(NSTimer *)timer
 {
     if (!self.paused) {
-        for (int i = 0; i < arc4random_uniform(3); i++) {
-            AHBerries *newBerry = [self newFallingBerry];
+        
+        //create between 2 and 3 berries
+        for (int i = 0; i < 2 + arc4random_uniform(2); i++) {
+            AHBerrySprite *newBerry = [self newFallingBerry];
             newBerry.position = CGPointMake(arc4random_uniform(self.size.width),
                                             self.size.height + newBerry.size.height / 2);
             [self addChild:newBerry];
         }
     }
 }
-    
-- (AHBerries *)newFallingBerry
-{
-    AHBerryType randomType = arc4random_uniform(3);
-    AHBerries *berry = [AHBerries spriteNodeWithBerryType:randomType];
 
-    CGFloat scale = .5 + (1 + arc4random_uniform(10)) / 10.0;
-    berry.yScale = scale;
-    berry.xScale = scale;
+//create berry
+- (AHBerrySprite *)newFallingBerry
+{
+    //ranodm type
+    AHBerryType randomType = arc4random_uniform(5);
+    AHBerrySprite *berry = [AHBerrySprite spriteNodeWithBerryType:randomType];
     
-    CGFloat duration = (10 + arc4random_uniform(10)) * self.velocity;
-    SKAction *moveAction = [SKAction sequence:@[[SKAction moveToY:0 duration:duration],
+    //random size
+    CGFloat random = 1 + arc4random_uniform(10) / 10.0;
+    berry.scale *= random;
+    
+    //random rotation
+    berry.zRotation = - M_PI / 6 + arc4random_uniform(10) * M_PI / 30;
+    
+    //falling action with random time
+    CGFloat fallDuration = (10 + arc4random_uniform(10));
+    SKAction *moveAction = [SKAction sequence:@[[SKAction moveToY:-50 duration:fallDuration],
                                                 [SKAction removeFromParent]]];
     [berry runAction:moveAction];
     

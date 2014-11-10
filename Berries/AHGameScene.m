@@ -7,24 +7,13 @@
 //
 
 #import "AHGameScene.h"
-#import "AHBerries.h"
-#import "AHCamp.h"
-
-AHDifficulty kDifficulty = AHDifficultyEasy;
 
 @interface AHGameScene ()
 
-//Sprites
-@property (nonatomic, strong) NSMutableArray *berryNodes;
-@property (nonatomic, weak) AHBerries *draggedBerry;
-@property (nonatomic, strong) NSArray *camps;
-@property (nonatomic, readonly, strong) AHCamp *greyCamp;
+@property (nonatomic, weak) AHBerrySprite *draggedBerry;
+@property (nonatomic, strong) NSArray *berryCamps;
+@property (nonatomic, strong) AHGame *game;
 
-//Game properties
-@property (nonatomic) NSUInteger score;
-@property (nonatomic) NSUInteger timeElapsed;
-@property (nonatomic, strong) NSTimer *time;
-@property (nonatomic, strong) NSDate *startTime;
 @end
 
 @implementation AHGameScene
@@ -32,6 +21,7 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
 - (instancetype)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
+        self.game = [[AHGame alloc] init];
         self.name = @"GameScene";
         [self createScene];
     }
@@ -41,231 +31,126 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
 //Scene initialization
 - (void)createScene
 {
-    //Start game counter and set the selector to update GUI
-    self.time = [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateTime:) userInfo:nil repeats:YES];
-    //Get the current time to know how long the game has run
-    self.startTime = [NSDate date];
+    
+    //listen for notifications
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center addObserver:self selector:@selector(spawnBerry:) name:@"spawnBerry" object:nil];
+    [center addObserver:self selector:@selector(endGame:) name:@"endGame" object:nil];
+    
+    //set anchor point to lower left
+    self.anchorPoint = CGPointMake(0, 0);
+    
+    //clear background to show the parent's background
+    self.backgroundColor = [SKColor clearColor];
     
     //Add all camps to the scene
-    for (AHCamp *camp in self.camps) {
-        camp.zPosition = 1;
-        [self addChild:camp];
-    }
-    
-    //Create 15 berries for debug purposes
-    for (int i = 0; i < 15; i++) {
-        [self createBerryAtLocation:[self randomLocationForBerryInCamp:self.greyCamp]];
+    for (AHCampSprite *berryCamp in self.berryCamps) {
+        berryCamp.zPosition = 1;
+        [self addChild:berryCamp];
     }
 }
 
 //Quite self explanitory
-- (void)endGame
+- (void)endGame:(NSNotification *)notification
 {
-    //Stop the timer
-    [self.time invalidate];
+    //remove listener
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    //Tell the GUI we are done
-    if ([self.gameDelegate respondsToSelector:@selector(gameEndedAt:after:andScore:)]) {
-        [self.gameDelegate gameEndedAt:[NSDate date] after:self.timeElapsed andScore:self.score];
+    //make all berries disappear
+    for (SKSpriteNode *childNode in [self children]) {
+        if ([childNode isKindOfClass:[AHBerrySprite class]]) {
+            [(AHBerrySprite *) childNode disappear];
+        }
     }
 }
 
-#pragma mark Create Berries
+#pragma mark Notifications
 
-- (AHBerries *)createBerryAtLocation:(CGPoint)location
+//berry creation method
+- (void)spawnBerry:(NSNotification *)notification
 {
-    //Choose a random camp from the ones created
-    AHCamp *randomCamp = self.camps[1 + arc4random_uniform((u_int32_t) self.camps.count - 1)];
+    //static variable to make the berries appear on top of the last one
+    static NSUInteger zPostition = 1;
     
-    //We only use it's AHBerryType to create a berry
-    return [self createBerryAtLocation:location withType:randomCamp.berryType];
-}
-
-- (AHBerries *)createBerryAtLocation:(CGPoint)location withType:(AHBerryType)type
-{
-    AHBerries *berry = [AHBerries spriteNodeWithBerryType:type];
+    //get one of the two camps and use it's type for the berry
+    AHCampSprite *randomCamp = (AHCampSprite *) self.berryCamps[arc4random_uniform((u_int32_t) self.berryCamps.count)];
+    AHBerrySprite *berry = [AHBerrySprite spriteNodeWithBerryType:randomCamp.berryType];
     
-    //We set the position a second time so that the berry is in the camp
+    //increment the static zPosition
+    berry.zPosition = zPostition++;
     
-    //Will probably remove once I get better graphics from Leo
-    berry.position = location;
-    berry.position = [self pointForBerry:berry inCamp:self.greyCamp];
-    berry.lastPosition = self.position;
+    //make sure the berry only spawns in the zone without the carpets
+    CGPoint berryPosition;
     
-    //Start in minimized mode
-    [berry setScale:0];
+    //if the position we create already contains a berry, retry
+    do {
+        CGFloat campSize = self.size.width / 2;
+        CGFloat spawnWidth = self.size.width - berry.size.width;
+        CGFloat spawnHeight = self.size.height - campSize - berry.size.height;
+        
+        CGFloat x = berry.size.width / 2 + arc4random_uniform((u_int32_t) spawnWidth);
+        CGFloat y = berry.size.height / 2 + arc4random_uniform((u_int32_t) spawnHeight);
+        
+        berryPosition = CGPointMake(x, y);
+    } while ([self nodeAtPoint:berryPosition ofClass:[AHBerrySprite class]]);
     
-    [self.greyCamp addChild:berry];
+    //start it hidden
+    berry.alpha = 0;
+    berry.position = berryPosition;
     
-    //Make berry appear, then rotate it
-    SKAction *group = [SKAction group:@[[SKAction scaleTo:1 duration:1], [SKAction repeatActionForever:[SKAction sequence:@[[SKAction rotateToAngle:M_PI/10 duration:.75], [SKAction rotateToAngle:-M_PI/10 duration:.75]]]]]];
-    [berry runAction:group];
+    [self addChild:berry];
     
-    [self.berryNodes addObject:berry];
-    
-    berry.zPosition = 2;
-    return berry;
-}
-
-#pragma mark Game Mechanics
-
-- (void)setScore:(NSUInteger)score
-{
-    if ([self.gameDelegate respondsToSelector:@selector(scoreDidChange:)]) {
-        [self.gameDelegate scoreDidChange:score];
-    }
-    _score = score;
-}
-
-- (void)updateTime:(NSTimer *)timer
-{
-    self.timeElapsed = - [self.startTime timeIntervalSinceNow];
-    
-    if ([self.gameDelegate respondsToSelector:@selector(timeDidChange:)]) {
-        [self.gameDelegate timeDidChange:self.timeElapsed];
-    }
+    //animate it
+    [berry appear];
 }
 
 #pragma mark Camps
 
-- (NSArray *)camps
+//array with both camps, lazy instantiation
+- (NSArray *)berryCamps
 {
-    //Create camps when this method is called, then keep it in memory
-    if (!_camps) {
+    if (!_berryCamps) {
         
-        switch (kDifficulty) {
-            case AHDifficultyEasy:
-            {
-                CGFloat campHeight = self.size.height / 3;
-                CGFloat campWidth = self.size.width / 2;
-                CGSize campSize = CGSizeMake(campWidth, campHeight);
-                
-                AHCamp *banana = [AHCamp spriteNodeWithBerryType:AHBerryTypeBanana size:campSize];
-                banana.position = CGPointMake(self.size.width / 4,
-                                              self.size.height - banana.size.height / 2);
-                
-                AHCamp *strawberry = [AHCamp spriteNodeWithBerryType:AHBerryTypeStrawberry size:campSize];
-                strawberry.position = CGPointMake(3 * self.size.width / 4,
-                                                  self.size.height - strawberry.size.height / 2);
-                
-                AHCamp *greyCamp = [AHCamp spriteNodeWithSize:CGSizeMake(self.size.width, self.size.height - strawberry.size.height)];
-                greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - strawberry.size.height - greyCamp.size.height / 2);
-                greyCamp.color = [SKColor colorWithRed:133.0/255 green:196.0/255 blue:50.0/255 alpha:1];
-                
-                _camps = @[greyCamp, banana, strawberry];
-                break;
-            }
-            case AHDifficultyMedium:
-            {
-                CGFloat campHeight = self.size.height / 3;
-                CGFloat smallCampWidth = self.size.width / 2;
-                CGFloat bigCampWidth = self.size.width;
-                CGSize smallCampSize = CGSizeMake(smallCampWidth, campHeight);
-                CGSize bigCampSize = CGSizeMake(bigCampWidth, campHeight);
-                
-                AHCamp *strawberry = [AHCamp spriteNodeWithBerryType:AHBerryTypeStrawberry size:smallCampSize];
-                strawberry.position = CGPointMake(smallCampWidth / 2,
-                                                  self.size.height - campHeight / 2);
-                
-                AHCamp *lemon = [AHCamp spriteNodeWithBerryType:AHBerryTypeLemon size:smallCampSize];
-                lemon.position = CGPointMake(smallCampWidth + smallCampWidth / 2,
-                                             self.size.height - campHeight / 2);
-                
-                AHCamp *orange = [AHCamp spriteNodeWithBerryType:AHBerryTypeOrange size:bigCampSize];
-                orange.position = CGPointMake(self.size.width / 2,
-                                              self.size.height - 2 * campHeight - campHeight / 2);
-                
-                AHCamp *greyCamp = [AHCamp spriteNodeWithSize:bigCampSize];
-                greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - campHeight - campHeight / 2);
-                
-                _camps = @[greyCamp, strawberry, lemon, orange];
-                break;
-            }
-            case AHDifficultyHard:
-            {
-                CGFloat campHeight = self.size.height / 3;
-                CGFloat campWidth = self.size.width / 2;
-                CGSize campSize = CGSizeMake(campWidth, campHeight);
-                
-                AHCamp *strawberry = [AHCamp spriteNodeWithBerryType:AHBerryTypeStrawberry size:campSize];
-                strawberry.position = CGPointMake(campWidth / 2,
-                                                  self.size.height - campHeight / 2);
-                
-                AHCamp *lemon = [AHCamp spriteNodeWithBerryType:AHBerryTypeLemon size:campSize];
-                lemon.position = CGPointMake(campWidth + campWidth / 2,
-                                             self.size.height - campHeight / 2);
-                
-                AHCamp *orange = [AHCamp spriteNodeWithBerryType:AHBerryTypeOrange size:campSize];
-                orange.position = CGPointMake(campWidth / 2,
-                                              self.size.height - 2 * campHeight - campHeight / 2);
-                
-                AHCamp *banana = [AHCamp spriteNodeWithBerryType:AHBerryTypeBanana size:campSize];
-                banana.position = CGPointMake(campWidth + campWidth / 2,
-                                              self.size.height - 2 * campHeight - campHeight / 2);
-                
-                AHCamp *greyCamp = [AHCamp spriteNodeWithSize:CGSizeMake(campWidth * 2, campHeight)];
-                greyCamp.position = CGPointMake(self.size.width / 2,
-                                                self.size.height - campHeight - campHeight / 2);
-                
-                _camps = @[greyCamp, strawberry, lemon, orange, banana];
-            }
-        }
+        //margin between the camps
+        CGFloat spacing = 10;
+        CGFloat campSize = (self.size.width - 3 * spacing) / 2;
+        
+        //get both different random types
+        AHBerryType firstFruitType = arc4random_uniform(5);
+        AHBerryType secondFruitType;
+        do {
+            secondFruitType = arc4random_uniform(5);
+        } while (secondFruitType == firstFruitType);
+        
+        //create first camp
+        AHCampSprite *firstCamp = [AHCampSprite berryCampWithType:firstFruitType size:campSize];
+        firstCamp.position = CGPointMake(spacing,
+                                         self.size.height - spacing);
+        
+        //second
+        AHCampSprite *secondCamp = [AHCampSprite berryCampWithType:secondFruitType size:campSize];
+        secondCamp.position = CGPointMake(firstCamp.size.width + 2 * spacing,
+                                          self.size.height - spacing);
+        _berryCamps = @[firstCamp, secondCamp];
     }
-    return _camps;
-}
-
-- (AHCamp *)greyCamp
-{
-    return (AHCamp *) self.camps[0];
+    return _berryCamps;
 }
 
 #pragma mark Random Methods
 
-- (AHCamp *)berryIsInCamp:(AHBerries *)berry
+//find the node of a certain class, at the point specified
+- (SKNode *)nodeAtPoint:(CGPoint)point ofClass:(Class)class
 {
-    //Check all nodes under touch
-    //If the node is a camp, return it
-    //Otherwise return nil
-    for (SKNode *node in [self nodesAtPoint:berry.position]) {
-        if ([node isKindOfClass:[AHCamp class]]) {
-            return (AHCamp *)node;
-        }
+    //go through all nodes at point
+    for (SKNode *node in [self nodesAtPoint:point]) {
+        
+        //check if the class matches and return it
+        if ([node isMemberOfClass:class])
+            return (SKNode *)node;
     }
+    
+    //if nothing fits, return nil
     return nil;
-}
-
-- (CGPoint)pointForBerry:(AHBerries *)berry inCamp:(AHCamp *)camp
-{
-    CGPoint newPosition = berry.position;
-    
-    //For top, bottom, left and right of the berry, we check if it is entirely in the camp
-    
-    //Get the coordinate of the side of the berry (position of the berry then add or remove half of the berry) inside of the camp
-    //and compare to the half width of the camp
-    
-    if (berry.position.x - berry.size.width / 2 < - camp.size.width / 2) {
-        newPosition.x = - camp.size.width / 2 + berry.size.width / 2;
-    }
-    if (berry.position.x + berry.size.width / 2 > camp.size.width / 2) {
-        newPosition.x = camp.size.width / 2 - berry.size.width / 2;
-    }
-    if (berry.position.y - berry.size.height / 2 < - camp.size.height / 2) {
-        newPosition.y = - camp.size.height / 2 + berry.size.height / 2;
-    }
-    if (berry.position.y + berry.size.height / 2 > camp.size.height / 2) {
-        newPosition.y = camp.size.height / 2 - berry.size.height / 2;
-    }
-    return newPosition;
-}
-
-- (CGPoint)randomLocationForBerryInCamp:(AHCamp *)camp
-{
-    //Remove half the size to start at 0, then add a random number inside the size.
-    CGFloat x = - camp.size.width / 2 + arc4random() % (int)(camp.size.width);
-    CGFloat y = - camp.size.height / 2 + arc4random() % (int)(camp.size.height);
-    return CGPointMake(x, y);
 }
 
 #pragma mark UITouch
@@ -276,35 +161,19 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
     
     UITouch *touch = [touches anyObject];
     CGPoint location = [touch locationInNode:self];
-    SKNode *nodeAtTouch = [self nodeAtPoint:location];
     
-    //Move berry
-    
-    //Make sure we only move one berry at a time
+    //make sure another berry isn't being moved
     if (!self.draggedBerry) {
         
-        //Check if we are touching a berry
-        if ([nodeAtTouch isKindOfClass:[AHBerries class]]) {
+        //find the berry at our touch location
+        AHBerrySprite *touchedBerry = (AHBerrySprite *) [self nodeAtPoint:location ofClass:[AHBerrySprite class]];
+        
+        //if there is one
+        if (touchedBerry) {
             
-            AHBerries *touchedBerry = (AHBerries *) nodeAtTouch;
-            
-            //Make sure that the berry is not already sorted
-            if (!touchedBerry.success) {
-                
-                //Set the dragged berry
-                self.draggedBerry = (AHBerries *) touchedBerry;
-            
-                //Remove from Grey Camp
-                [self.draggedBerry removeFromParent];
-                
-                //Add berry to AHGameScene and set lastPosition for reset
-                self.draggedBerry.lastPosition = [touch locationInNode:self.greyCamp];
-                self.draggedBerry.position = location;
-                [self addChild:self.draggedBerry];
-            }
-        } else if ([self nodeAtPoint:location] == self.greyCamp) {
-            //Debug for creating berries
-            [self createBerryAtLocation:[self convertPoint:location toNode:self.greyCamp]];
+            //make sure it isnt't already saved, and make it out dragged berry
+            if (touchedBerry.rottingStage != AHRottingStageSaved)
+                self.draggedBerry = touchedBerry;
         }
     }
 }
@@ -313,59 +182,43 @@ AHDifficulty kDifficulty = AHDifficultyEasy;
 {
     [super touchesEnded:touches withEvent:event];
     
-    //Check if we stopped touching a berry
-    if ([[self nodeAtPoint:self.draggedBerry.position] isKindOfClass:[AHBerries class]]) {
-        
-        //Check if berry is in a camp
-        AHCamp *destinationCamp = [self berryIsInCamp:self.draggedBerry];
-        if (destinationCamp && (destinationCamp.berryType == self.draggedBerry.berryType || destinationCamp == self.greyCamp)) {
-        
-            //Remove from MainScene
-            [self.draggedBerry removeFromParent];
-            
-            //Change location to in camp
-            self.draggedBerry.position = [[touches anyObject] locationInNode:destinationCamp];
-            self.draggedBerry.position = [self pointForBerry:self.draggedBerry inCamp:destinationCamp];
-            
-            self.draggedBerry.lastPosition = self.draggedBerry.position;
-            
-            //Add to Camp
-            [destinationCamp addChild:self.draggedBerry];
-            
-            //Block moving if berry is on good camp
-            if (destinationCamp.berryType == self.draggedBerry.berryType) {
-                self.draggedBerry.success = YES;
-                [self.draggedBerry removeAllActions];
-                SKAction *disappear = [SKAction sequence:@[[SKAction group:@[[SKAction moveTo:CGPointZero duration:.5], [SKAction fadeOutWithDuration:.5]]], [SKAction removeFromParent]]];
-                [self.draggedBerry runAction:disappear];
-                self.score++;
-            }
-            
-            self.draggedBerry = nil;
-            
-        } else if (destinationCamp.berryType != self.draggedBerry.berryType) {
-            [self endGame];
-        } else {
-            //Cancel the event
-            [self touchesCancelled:touches withEvent:event];
+    //get location of touch
+    UITouch *touch = [touches anyObject];
+    CGPoint location = [touch locationInNode:self];
+    
+    AHBerrySprite *berryAtTouch;
+    
+    //check it the berry under our touch is the dragged one, and set it as berryAtTouch
+    for (SKNode *node in [self nodesAtPoint:location]) {
+        if (node == self.draggedBerry) {
+            berryAtTouch = (AHBerrySprite *) node;
         }
     }
-}
-
-- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    [super touchesCancelled:touches withEvent:event];
     
-    if ([[self nodeAtPoint:self.draggedBerry.position] isKindOfClass:[AHBerries class]]) {
+    if (berryAtTouch) {
         
-        //Same as above
-        //No location changing
-        //Using the berries lastPosition
-        [self.draggedBerry removeFromParent];
-        self.draggedBerry.position = self.draggedBerry.lastPosition;
-        [self.greyCamp addChild:self.draggedBerry];
-        self.draggedBerry = nil;
+        //look at the destination camp
+        AHCampSprite *destinationCamp = (AHCampSprite *) [self nodeAtPoint:self.draggedBerry.position ofClass:[AHCampSprite class]];
+        
+        //is there a camp under our touch
+        if (destinationCamp) {
+            
+            //match the typ
+            if (destinationCamp.berryType == self.draggedBerry.berryType) {
+        
+                //save it, make it disappear and add a point
+                self.draggedBerry.rottingStage = AHRottingStageSaved;
+                [self.draggedBerry disappear];
+                [self.game addPoint];
+            } else {
+                //lose the game :(
+                [[NSNotificationCenter defaultCenter] postNotificationName:@"gameLost" object:self];
+            }
+        }
     }
+    
+    //reset the dragged berry
+    self.draggedBerry = nil;
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event

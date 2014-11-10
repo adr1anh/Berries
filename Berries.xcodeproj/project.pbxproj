@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A17A0F319F3D65900888B04 /* AHGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A17A0F219F3D65900888B04 /* AHGame.m */; };
 		3A24B80F18A942F600E93EBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B80E18A942F600E93EBB /* Foundation.framework */; };
 		3A24B81118A942F600E93EBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B81018A942F600E93EBB /* CoreGraphics.framework */; };
 		3A24B81318A942F600E93EBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B81218A942F600E93EBB /* UIKit.framework */; };
@@ -21,21 +22,20 @@
 		3A24B83A18A942F600E93EBB /* BerriesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B83918A942F600E93EBB /* BerriesTests.m */; };
 		3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B84318A9438D00E93EBB /* SpriteKit.framework */; };
 		3A24B84718A9445400E93EBB /* AHGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B84618A9445400E93EBB /* AHGameScene.m */; };
-		3A7B4107199B9DCB00B012BD /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A7B4106199B9DCB00B012BD /* GameKit.framework */; };
+		3A4F02A119D03DEA004D520C /* AHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F02A019D03DEA004D520C /* AHMenuViewController.m */; };
 		3A7B4108199B9E6A00B012BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B82018A942F600E93EBB /* Main.storyboard */; };
-		3A7B410B199B9FE400B012BD /* AHLabelBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A7B410A199B9FE400B012BD /* AHLabelBarButtonItem.m */; };
-		3A7B410D199BA56A00B012BD /* PeachCreamCreamsicles.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B410C199BA56A00B012BD /* PeachCreamCreamsicles.ttf */; };
-		3A7B4111199BA62600B012BD /* KGSecondChancesSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */; };
+		3A7C529019D01ABD00B3AC7F /* KGSecondChancesSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */; };
+		3A823A6419E972C600B641BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A823A6319E972C600B641BC /* Images.xcassets */; };
 		3A8B2F1C1972CB9C008669EB /* AHMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */; };
 		3A8B2F211972CDC7008669EB /* AHFallingBerriesScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */; };
-		3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7918ABCDE100E843BA /* AHCamp.m */; };
-		3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7C18ABD5A200E843BA /* AHBerries.m */; };
-		3AC3BC321980A03C002FFB1A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AC3BC311980A03C002FFB1A /* Images.xcassets */; };
+		3A93D23719FD767D00B938E5 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A93D23619FD767D00B938E5 /* GameKit.framework */; };
+		3A9E28501A015E9E00DBDFC2 /* Launch Screen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A9E284F1A015E9E00DBDFC2 /* Launch Screen.xib */; };
+		3A9E28531A0163BE00DBDFC2 /* AHCampSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A9E28521A0163BE00DBDFC2 /* AHCampSprite.m */; };
+		3AAD1E7D18ABD5A200E843BA /* AHBerrySprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AAD1E7C18ABD5A200E843BA /* AHBerrySprite.m */; };
 		3AD9B9D919742E950021868D /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9D819742E950021868D /* CoreText.framework */; };
 		3AD9B9DB19742E9B0021868D /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9DA19742E9B0021868D /* QuartzCore.framework */; };
 		3AD9B9DD19742EA20021868D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9DC19742EA20021868D /* Security.framework */; };
 		3AD9B9DF19742EAA0021868D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3AD9B9DE19742EAA0021868D /* SystemConfiguration.framework */; };
-		3AEB71FC19A24D1C000A70CC /* AHOptionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3AEB71FB19A24D1C000A70CC /* AHOptionsViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +63,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A17A0F119F3D65900888B04 /* AHGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHGame.h; sourceTree = "<group>"; };
+		3A17A0F219F3D65900888B04 /* AHGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHGame.m; sourceTree = "<group>"; };
 		3A24B80B18A942F600E93EBB /* Berries.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Berries.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A24B80E18A942F600E93EBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3A24B81018A942F600E93EBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -84,26 +86,25 @@
 		3A24B84318A9438D00E93EBB /* SpriteKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SpriteKit.framework; path = System/Library/Frameworks/SpriteKit.framework; sourceTree = SDKROOT; };
 		3A24B84518A9445400E93EBB /* AHGameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHGameScene.h; sourceTree = "<group>"; };
 		3A24B84618A9445400E93EBB /* AHGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHGameScene.m; sourceTree = "<group>"; };
-		3A7B4106199B9DCB00B012BD /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		3A7B4109199B9FE400B012BD /* AHLabelBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHLabelBarButtonItem.h; sourceTree = "<group>"; };
-		3A7B410A199B9FE400B012BD /* AHLabelBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHLabelBarButtonItem.m; sourceTree = "<group>"; };
-		3A7B410C199BA56A00B012BD /* PeachCreamCreamsicles.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PeachCreamCreamsicles.ttf; sourceTree = "<group>"; };
+		3A4F029F19D03DEA004D520C /* AHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMenuViewController.h; sourceTree = "<group>"; };
+		3A4F02A019D03DEA004D520C /* AHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMenuViewController.m; sourceTree = "<group>"; };
 		3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGSecondChancesSolid.ttf; sourceTree = "<group>"; };
+		3A823A6319E972C600B641BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainMenuViewController.h; sourceTree = "<group>"; };
 		3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainMenuViewController.m; sourceTree = "<group>"; };
 		3A8B2F1F1972CDC7008669EB /* AHFallingBerriesScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHFallingBerriesScene.h; sourceTree = "<group>"; };
 		3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHFallingBerriesScene.m; sourceTree = "<group>"; };
-		3AAD1E7818ABCDE100E843BA /* AHCamp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCamp.h; sourceTree = "<group>"; };
-		3AAD1E7918ABCDE100E843BA /* AHCamp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCamp.m; sourceTree = "<group>"; };
-		3AAD1E7B18ABD5A200E843BA /* AHBerries.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHBerries.h; sourceTree = "<group>"; };
-		3AAD1E7C18ABD5A200E843BA /* AHBerries.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHBerries.m; sourceTree = "<group>"; };
-		3AC3BC311980A03C002FFB1A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3A93D23619FD767D00B938E5 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		3A9E284F1A015E9E00DBDFC2 /* Launch Screen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Launch Screen.xib"; sourceTree = "<group>"; };
+		3A9E28511A0163BE00DBDFC2 /* AHCampSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHCampSprite.h; sourceTree = "<group>"; };
+		3A9E28521A0163BE00DBDFC2 /* AHCampSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHCampSprite.m; sourceTree = "<group>"; };
+		3A9E285D1A0369E100DBDFC2 /* AHDismissViewControllerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHDismissViewControllerProtocol.h; sourceTree = "<group>"; };
+		3AAD1E7B18ABD5A200E843BA /* AHBerrySprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHBerrySprite.h; sourceTree = "<group>"; };
+		3AAD1E7C18ABD5A200E843BA /* AHBerrySprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHBerrySprite.m; sourceTree = "<group>"; };
 		3AD9B9D819742E950021868D /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		3AD9B9DA19742E9B0021868D /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		3AD9B9DC19742EA20021868D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		3AD9B9DE19742EAA0021868D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		3AEB71FA19A24D1C000A70CC /* AHOptionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHOptionsViewController.h; sourceTree = "<group>"; };
-		3AEB71FB19A24D1C000A70CC /* AHOptionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHOptionsViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A7B4107199B9DCB00B012BD /* GameKit.framework in Frameworks */,
+				3A93D23719FD767D00B938E5 /* GameKit.framework in Frameworks */,
 				3AD9B9DF19742EAA0021868D /* SystemConfiguration.framework in Frameworks */,
 				3AD9B9DD19742EA20021868D /* Security.framework in Frameworks */,
 				3AD9B9DB19742E9B0021868D /* QuartzCore.framework in Frameworks */,
@@ -158,7 +159,7 @@
 		3A24B80D18A942F600E93EBB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A7B4106199B9DCB00B012BD /* GameKit.framework */,
+				3A93D23619FD767D00B938E5 /* GameKit.framework */,
 				3AD9B9DE19742EAA0021868D /* SystemConfiguration.framework */,
 				3AD9B9DC19742EA20021868D /* Security.framework */,
 				3AD9B9DA19742E9B0021868D /* QuartzCore.framework */,
@@ -218,7 +219,6 @@
 			isa = PBXGroup;
 			children = (
 				3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */,
-				3A7B410C199BA56A00B012BD /* PeachCreamCreamsicles.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -226,8 +226,9 @@
 		3A7B410F199BA58B00B012BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3AC3BC311980A03C002FFB1A /* Images.xcassets */,
 				3A24B82018A942F600E93EBB /* Main.storyboard */,
+				3A9E284F1A015E9E00DBDFC2 /* Launch Screen.xib */,
+				3A823A6319E972C600B641BC /* Images.xcassets */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -236,16 +237,15 @@
 			isa = PBXGroup;
 			children = (
 				3A7B410F199BA58B00B012BD /* Resources */,
-				3A7B4109199B9FE400B012BD /* AHLabelBarButtonItem.h */,
-				3A7B410A199B9FE400B012BD /* AHLabelBarButtonItem.m */,
 				3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */,
 				3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */,
 				3A24B82318A942F600E93EBB /* AHGameViewController.h */,
 				3A24B82418A942F600E93EBB /* AHGameViewController.m */,
-				3AEB71FA19A24D1C000A70CC /* AHOptionsViewController.h */,
-				3AEB71FB19A24D1C000A70CC /* AHOptionsViewController.m */,
+				3A4F029F19D03DEA004D520C /* AHMenuViewController.h */,
+				3A4F02A019D03DEA004D520C /* AHMenuViewController.m */,
 				3A8B2F1F1972CDC7008669EB /* AHFallingBerriesScene.h */,
 				3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */,
+				3A9E285D1A0369E100DBDFC2 /* AHDismissViewControllerProtocol.h */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -255,10 +255,12 @@
 			children = (
 				3A24B84518A9445400E93EBB /* AHGameScene.h */,
 				3A24B84618A9445400E93EBB /* AHGameScene.m */,
-				3AAD1E7B18ABD5A200E843BA /* AHBerries.h */,
-				3AAD1E7C18ABD5A200E843BA /* AHBerries.m */,
-				3AAD1E7818ABCDE100E843BA /* AHCamp.h */,
-				3AAD1E7918ABCDE100E843BA /* AHCamp.m */,
+				3A17A0F119F3D65900888B04 /* AHGame.h */,
+				3A17A0F219F3D65900888B04 /* AHGame.m */,
+				3AAD1E7B18ABD5A200E843BA /* AHBerrySprite.h */,
+				3AAD1E7C18ABD5A200E843BA /* AHBerrySprite.m */,
+				3A9E28511A0163BE00DBDFC2 /* AHCampSprite.h */,
+				3A9E28521A0163BE00DBDFC2 /* AHCampSprite.m */,
 			);
 			name = Game;
 			sourceTree = "<group>";
@@ -350,10 +352,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3A7C529019D01ABD00B3AC7F /* KGSecondChancesSolid.ttf in Resources */,
+				3A823A6419E972C600B641BC /* Images.xcassets in Resources */,
+				3A9E28501A015E9E00DBDFC2 /* Launch Screen.xib in Resources */,
 				3A7B4108199B9E6A00B012BD /* Main.storyboard in Resources */,
-				3A7B4111199BA62600B012BD /* KGSecondChancesSolid.ttf in Resources */,
-				3A7B410D199BA56A00B012BD /* PeachCreamCreamsicles.ttf in Resources */,
-				3AC3BC321980A03C002FFB1A /* Images.xcassets in Resources */,
 				3A24B81918A942F600E93EBB /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,12 +376,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A24B84718A9445400E93EBB /* AHGameScene.m in Sources */,
-				3AAD1E7D18ABD5A200E843BA /* AHBerries.m in Sources */,
-				3A7B410B199B9FE400B012BD /* AHLabelBarButtonItem.m in Sources */,
+				3A9E28531A0163BE00DBDFC2 /* AHCampSprite.m in Sources */,
+				3AAD1E7D18ABD5A200E843BA /* AHBerrySprite.m in Sources */,
+				3A17A0F319F3D65900888B04 /* AHGame.m in Sources */,
 				3A8B2F211972CDC7008669EB /* AHFallingBerriesScene.m in Sources */,
-				3AAD1E7A18ABCDE100E843BA /* AHCamp.m in Sources */,
 				3A24B81B18A942F600E93EBB /* main.m in Sources */,
-				3AEB71FC19A24D1C000A70CC /* AHOptionsViewController.m in Sources */,
+				3A4F02A119D03DEA004D520C /* AHMenuViewController.m in Sources */,
 				3A24B82518A942F600E93EBB /* AHGameViewController.m in Sources */,
 				3A8B2F1C1972CB9C008669EB /* AHMainMenuViewController.m in Sources */,
 				3A24B81F18A942F600E93EBB /* AHAppDelegate.m in Sources */,
@@ -521,11 +523,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Berries/HockeySDK.embeddedframework",
-					"$(PROJECT_DIR)/Berries/HockeySDK-iOS/HockeySDK.embeddedframework",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Berries/Berries-Prefix.pch";
 				INFOPLIST_FILE = "Berries/Berries-Info.plist";
@@ -544,11 +542,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Berries/HockeySDK.embeddedframework",
-					"$(PROJECT_DIR)/Berries/HockeySDK-iOS/HockeySDK.embeddedframework",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Berries/Berries-Prefix.pch";
 				INFOPLIST_FILE = "Berries/Berries-Info.plist";

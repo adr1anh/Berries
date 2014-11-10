@@ -1,14 +1,19 @@
 //
-//  AHViewController.h
+//  AHVGameViewController.h
 //  Berries
 //
 //  Created by Adrian Hamelink on 10/02/14.
 //  Copyright (c) 2014 Adrian Hamelink. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import SpriteKit;
+
+#import "AHDismissViewControllerProtocol.h"
 #import "AHGameScene.h"
 
-@interface AHGameViewController : UIViewController <UIAlertViewDelegate, AHGameSceneDelegate>
-@property (strong, nonatomic) IBOutlet UINavigationBar *scoreBar;
+@interface AHGameViewController : UIViewController <UIAlertViewDelegate>
+
+@property (nonatomic, weak) id <AHDismissViewControllerProtocol> dismissDelegate;
+
 @end
+
