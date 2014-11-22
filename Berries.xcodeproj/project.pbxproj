@@ -88,6 +88,7 @@
 		3A24B84618A9445400E93EBB /* AHGameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHGameScene.m; sourceTree = "<group>"; };
 		3A4F029F19D03DEA004D520C /* AHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMenuViewController.h; sourceTree = "<group>"; };
 		3A4F02A019D03DEA004D520C /* AHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMenuViewController.m; sourceTree = "<group>"; };
+		3A5281531A20CDE500D6B27F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGSecondChancesSolid.ttf; sourceTree = "<group>"; };
 		3A823A6319E972C600B641BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainMenuViewController.h; sourceTree = "<group>"; };
@@ -140,6 +141,7 @@
 		3A24B80218A942F600E93EBB = {
 			isa = PBXGroup;
 			children = (
+				3A5281531A20CDE500D6B27F /* .gitignore */,
 				3A24B81418A942F600E93EBB /* Berries */,
 				3A24B83318A942F600E93EBB /* BerriesTests */,
 				3A24B80D18A942F600E93EBB /* Frameworks */,
