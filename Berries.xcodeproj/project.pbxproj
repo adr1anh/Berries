@@ -23,8 +23,8 @@
 		3A24B84418A9438D00E93EBB /* SpriteKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A24B84318A9438D00E93EBB /* SpriteKit.framework */; };
 		3A24B84718A9445400E93EBB /* AHGameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A24B84618A9445400E93EBB /* AHGameScene.m */; };
 		3A4F02A119D03DEA004D520C /* AHMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A4F02A019D03DEA004D520C /* AHMenuViewController.m */; };
+		3A5281551A20D22400D6B27F /* KGSecondChancesSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A5281541A20D22400D6B27F /* KGSecondChancesSolid.ttf */; };
 		3A7B4108199B9E6A00B012BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A24B82018A942F600E93EBB /* Main.storyboard */; };
-		3A7C529019D01ABD00B3AC7F /* KGSecondChancesSolid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */; };
 		3A823A6419E972C600B641BC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A823A6319E972C600B641BC /* Images.xcassets */; };
 		3A8B2F1C1972CB9C008669EB /* AHMainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */; };
 		3A8B2F211972CDC7008669EB /* AHFallingBerriesScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A8B2F201972CDC7008669EB /* AHFallingBerriesScene.m */; };
@@ -89,7 +89,7 @@
 		3A4F029F19D03DEA004D520C /* AHMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMenuViewController.h; sourceTree = "<group>"; };
 		3A4F02A019D03DEA004D520C /* AHMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMenuViewController.m; sourceTree = "<group>"; };
 		3A5281531A20CDE500D6B27F /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGSecondChancesSolid.ttf; sourceTree = "<group>"; };
+		3A5281541A20D22400D6B27F /* KGSecondChancesSolid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KGSecondChancesSolid.ttf; sourceTree = "<group>"; };
 		3A823A6319E972C600B641BC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3A8B2F1A1972CB9C008669EB /* AHMainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AHMainMenuViewController.h; sourceTree = "<group>"; };
 		3A8B2F1B1972CB9C008669EB /* AHMainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AHMainMenuViewController.m; sourceTree = "<group>"; };
@@ -220,7 +220,7 @@
 		3A7B410E199BA57400B012BD /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				3A7B4110199BA62600B012BD /* KGSecondChancesSolid.ttf */,
+				3A5281541A20D22400D6B27F /* KGSecondChancesSolid.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -354,7 +354,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A7C529019D01ABD00B3AC7F /* KGSecondChancesSolid.ttf in Resources */,
+				3A5281551A20D22400D6B27F /* KGSecondChancesSolid.ttf in Resources */,
 				3A823A6419E972C600B641BC /* Images.xcassets in Resources */,
 				3A9E28501A015E9E00DBDFC2 /* Launch Screen.xib in Resources */,
 				3A7B4108199B9E6A00B012BD /* Main.storyboard in Resources */,
