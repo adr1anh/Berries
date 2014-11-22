@@ -21,7 +21,6 @@
 - (instancetype)initWithSize:(CGSize)size
 {
     if (self = [super initWithSize:size]) {
-        self.game = [[AHGame alloc] init];
         self.name = @"GameScene";
         [self createScene];
     }
@@ -48,6 +47,71 @@
         berryCamp.zPosition = 1;
         [self addChild:berryCamp];
     }
+    
+    [self showIntro];
+}
+
+- (void)showIntro
+{
+    SKSpriteNode *darkBackground = [SKSpriteNode spriteNodeWithColor:[SKColor darkGrayColor] size:self.size];
+    darkBackground.anchorPoint = CGPointMake(0, 0);
+    darkBackground.position = CGPointMake(0, 0);
+    darkBackground.name = @"darkBackground";
+    darkBackground.zPosition = 2;
+    darkBackground.alpha = 0;
+
+    [self addChild:darkBackground];
+    
+    AHCampSprite *aCamp = (AHCampSprite *) self.berryCamps[0];
+    AHCampSprite *bCamp = (AHCampSprite *) self.berryCamps[1];
+    
+    AHBerrySprite *aBerry = [AHBerrySprite spriteNodeWithBerryType:aCamp.berryType];
+    AHBerrySprite *bBerry = [AHBerrySprite spriteNodeWithBerryType:bCamp.berryType];
+    
+    aBerry.alpha = 0;
+    bBerry.alpha = 0;
+    
+    aBerry.scale *= 1.25;
+    bBerry.scale *= 1.25;
+    
+    aBerry.position = CGPointMake(CGRectGetMidX(aCamp.frame),
+                                  self.frame.size.height / 2);
+    bBerry.position = CGPointMake(CGRectGetMidX(bCamp.frame),
+                                  self.frame.size.height / 2);
+    
+    aBerry.name = @"aBerry";
+    bBerry.name = @"bBerry";
+    
+    [aBerry setTexture:[aBerry.texture textureByApplyingCIFilter:[CIFilter filterWithName:@"CIPhotoEffectNoir"]]];
+    [bBerry setTexture:[bBerry.texture textureByApplyingCIFilter:[CIFilter filterWithName:@"CIPhotoEffectNoir"]]];
+    
+    aBerry.zPosition = 3;
+    bBerry.zPosition = 3;
+    
+    aBerry.dragable = NO;
+    bBerry.dragable = NO;
+    
+    [self addChild:aBerry];
+    [self addChild:bBerry];
+    
+    SKAction *aAction = [SKAction sequence:@[[AHBerrySprite appear],
+                                             [SKAction waitForDuration:.25],
+                                             [AHBerrySprite disappearToPoint:CGPointMake(CGRectGetMidX(aCamp.frame),
+                                                                                         CGRectGetMaxY(aCamp.frame))]]];
+    SKAction *bAction = [SKAction sequence:@[[AHBerrySprite appear],
+                                             [SKAction waitForDuration:.25],
+                                             [AHBerrySprite disappearToPoint:CGPointMake(CGRectGetMidX(bCamp.frame),
+                                                                                         CGRectGetMaxY(bCamp.frame))]]];
+    
+    [self runAction:[SKAction sequence:@[[SKAction runAction:[SKAction fadeAlphaTo:.5 duration:1] onChildWithName:@"darkBackground"],
+                                         [SKAction runAction:aAction onChildWithName:@"aBerry"],
+                                         [SKAction waitForDuration:1],
+                                         [SKAction runAction:bAction onChildWithName:@"bBerry"],
+                                         [SKAction runAction:[SKAction fadeOutWithDuration:1] onChildWithName:@"darkBackground"],
+                                         [SKAction waitForDuration:1],
+                                         [SKAction runBlock:^(void){self.game = [[AHGame alloc] init];}]]]];
+    
+    
 }
 
 //Quite self explanitory
@@ -59,7 +123,11 @@
     //make all berries disappear
     for (SKSpriteNode *childNode in [self children]) {
         if ([childNode isKindOfClass:[AHBerrySprite class]]) {
-            [(AHBerrySprite *) childNode disappear];
+            AHBerrySprite *remainingBerry = (AHBerrySprite *)childNode;
+            if (![remainingBerry actionForKey:kBerryActionDisappear] && ![remainingBerry actionForKey:kBerryActionExplode]) {
+                [remainingBerry runAction:[AHBerrySprite disappear]
+                                  withKey:kBerryActionDisappear];
+            }
         }
     }
 }
@@ -70,21 +138,20 @@
 - (void)spawnBerry:(NSNotification *)notification
 {
     //static variable to make the berries appear on top of the last one
-    static NSUInteger zPostition = 1;
     
     //get one of the two camps and use it's type for the berry
     AHCampSprite *randomCamp = (AHCampSprite *) self.berryCamps[arc4random_uniform((u_int32_t) self.berryCamps.count)];
     AHBerrySprite *berry = [AHBerrySprite spriteNodeWithBerryType:randomCamp.berryType];
     
     //increment the static zPosition
-    berry.zPosition = zPostition++;
+    berry.zPosition = 1;
     
     //make sure the berry only spawns in the zone without the carpets
     CGPoint berryPosition;
     
     //if the position we create already contains a berry, retry
     do {
-        CGFloat campSize = self.size.width / 2;
+        CGFloat campSize = self.frame.size.width / 2;
         CGFloat spawnWidth = self.size.width - berry.size.width;
         CGFloat spawnHeight = self.size.height - campSize - berry.size.height;
         
@@ -101,7 +168,9 @@
     [self addChild:berry];
     
     //animate it
-    [berry appear];
+    [berry runAction:[SKAction sequence:@[[AHBerrySprite appear],
+                                          [SKAction performSelector:@selector(startRotting) onTarget:berry]]]
+             withKey:kBerryActionAppear];
 }
 
 #pragma mark Camps
@@ -112,7 +181,7 @@
     if (!_berryCamps) {
         
         //margin between the camps
-        CGFloat spacing = 10;
+        CGFloat spacing = 15;
         CGFloat campSize = (self.size.width - 3 * spacing) / 2;
         
         //get both different random types
@@ -124,11 +193,13 @@
         
         //create first camp
         AHCampSprite *firstCamp = [AHCampSprite berryCampWithType:firstFruitType size:campSize];
+        firstCamp.zPosition = 0;
         firstCamp.position = CGPointMake(spacing,
                                          self.size.height - spacing);
         
         //second
         AHCampSprite *secondCamp = [AHCampSprite berryCampWithType:secondFruitType size:campSize];
+        secondCamp.zPosition = 0;
         secondCamp.position = CGPointMake(firstCamp.size.width + 2 * spacing,
                                           self.size.height - spacing);
         _berryCamps = @[firstCamp, secondCamp];
@@ -171,9 +242,11 @@
         //if there is one
         if (touchedBerry) {
             
-            //make sure it isnt't already saved, and make it out dragged berry
-            if (touchedBerry.rottingStage != AHRottingStageSaved)
-                self.draggedBerry = touchedBerry;
+            if (touchedBerry.dragable) {
+                //make sure it isnt't already saved, and make it out dragged berry
+                if (touchedBerry.rottingStage != AHRottingStageSaved)
+                    self.draggedBerry = touchedBerry;
+            }
         }
     }
 }
@@ -181,39 +254,47 @@
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    
-    //get location of touch
-    UITouch *touch = [touches anyObject];
-    CGPoint location = [touch locationInNode:self];
-    
-    AHBerrySprite *berryAtTouch;
-    
-    //check it the berry under our touch is the dragged one, and set it as berryAtTouch
-    for (SKNode *node in [self nodesAtPoint:location]) {
-        if (node == self.draggedBerry) {
-            berryAtTouch = (AHBerrySprite *) node;
-        }
-    }
-    
-    if (berryAtTouch) {
+
+    if (self.draggedBerry) {
         
-        //look at the destination camp
-        AHCampSprite *destinationCamp = (AHCampSprite *) [self nodeAtPoint:self.draggedBerry.position ofClass:[AHCampSprite class]];
+        BOOL intersectsSame = NO;
+        BOOL intersectsOther = NO;
+        AHCampSprite *destination;
         
-        //is there a camp under our touch
-        if (destinationCamp) {
+        //check if intersects with good camp
+        for (AHCampSprite *destinationCamp in self.berryCamps) {
             
-            //match the typ
-            if (destinationCamp.berryType == self.draggedBerry.berryType) {
-        
-                //save it, make it disappear and add a point
-                self.draggedBerry.rottingStage = AHRottingStageSaved;
-                [self.draggedBerry disappear];
-                [self.game addPoint];
-            } else {
-                //lose the game :(
-                [[NSNotificationCenter defaultCenter] postNotificationName:@"gameLost" object:self];
+            //only check the image
+            if ([self.draggedBerry.imageSprite intersectsNode:destinationCamp]) {
+                
+                if (destinationCamp.berryType == self.draggedBerry.berryType) {
+                    destination = destinationCamp;
+                    intersectsSame = YES;
+                    break;
+                }
+                else {
+                    intersectsOther = YES;
+                }
             }
+        }
+        
+        if (intersectsSame) {
+            //save it, make it disappear and add a point
+            self.draggedBerry.rottingStage = AHRottingStageSaved;
+            CGPoint center = CGPointMake(CGRectGetMidX(destination.frame),
+                                         CGRectGetMidY(destination.frame));
+            [self.draggedBerry removeActionForKey:kBerryActionJitter];
+            [self.draggedBerry runAction:[AHBerrySprite disappearToPoint:center]
+                                 withKey:kBerryActionDisappear];
+            [self.game addPoint];
+        }
+        
+        if (!intersectsSame && intersectsOther) {
+            SKAction *lose = [SKAction sequence:@[[AHBerrySprite explode],
+                                                  [SKAction runBlock:^(void){[[NSNotificationCenter defaultCenter] postNotificationName:@"gameLost" object:nil];}]]];
+            [self.draggedBerry runAction:lose
+                                 withKey:kBerryActionExplode];
+            
         }
     }
     

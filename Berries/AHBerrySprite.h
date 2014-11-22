@@ -8,6 +8,11 @@
 
 @import SpriteKit;
 
+#define kBerryActionExplode @"explode"
+#define kBerryActionDisappear @"disappear"
+#define kBerryActionAppear @"appear"
+#define kBerryActionJitter @"jitter"
+
 typedef NS_ENUM(NSUInteger, AHBerryType) {
     AHBerryTypeUnknown = -1,
     AHBerryTypeOrange = 0,
@@ -29,14 +34,20 @@ typedef NS_ENUM(NSUInteger, AHRottingStage) {
 
 @property AHBerryType berryType;
 @property AHRottingStage rottingStage;
-@property (nonatomic) CGFloat scale;
 @property AHBerrySprite *imageSprite;
+@property (nonatomic) CGFloat scale;
+@property BOOL dragable;
 
 - (instancetype)initWithBerryType:(AHBerryType)type;
 + (instancetype)spriteNodeWithBerryType:(AHBerryType)type;
 + (NSString *)nameForType:(AHBerryType)type;
++ (CGFloat)scaleSize:(CGSize)size toSide:(CGFloat)side;
 
-- (void)appear;
-- (void)disappear;
+- (void)startRotting;
+
++ (SKAction *)appear;
++ (SKAction *)disappear;
++ (SKAction *)disappearToPoint:(CGPoint)point;
++ (SKAction *)explode;
 
 @end

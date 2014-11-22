@@ -13,7 +13,7 @@
 - (instancetype)initWithBerryType:(AHBerryType)type
 {
     //creates a square proportional to the screen size
-    CGFloat hitZoneSide = [UIScreen mainScreen].bounds.size.width / 5.5;
+    CGFloat hitZoneSide = [UIScreen mainScreen].bounds.size.width / 5;
     CGSize hitZone = CGSizeMake(hitZoneSide, hitZoneSide);
     
     //self is the hit zone
@@ -24,31 +24,17 @@
         //add the image on top
         self.imageSprite = [[AHBerrySprite alloc] initWithImageNamed:[AHBerrySprite nameForType:type]];
         
-        //scale it
-        CGFloat width = self.imageSprite.size.width;
-        CGFloat height = self.imageSprite.size.height;
-        CGFloat scale;
-        
-        if (width <= height) {
-            scale = hitZoneSide / height;
-        } else {
-            scale = hitZoneSide / width;
-        }
-        
         //add it and make it slightly smaller
-        [self.imageSprite setScale:scale * .8];
+        CGFloat scale = [AHBerrySprite scaleSize:self.imageSprite.size toSide:hitZoneSide] * .8;
+        [self.imageSprite setScale:scale];
         [self addChild:self.imageSprite];
         
         self.berryType = type;
         self.rottingStage = AHRottingStageHealthy;
         self.name = [[AHBerrySprite nameForType:type] stringByAppendingString:@"Berry"];
+        self.dragable = YES;
     }
     return self;
-}
-
-+ (instancetype)spriteNodeWithBerryType:(AHBerryType)type
-{
-    return [[AHBerrySprite alloc] initWithBerryType:type];
 }
 
 - (void)setScale:(CGFloat)scale
@@ -57,11 +43,23 @@
     _scale = scale;
 }
 
++ (instancetype)spriteNodeWithBerryType:(AHBerryType)type
+{
+    return [[AHBerrySprite alloc] initWithBerryType:type];
+}
+
++ (CGFloat)scaleSize:(CGSize)size toSide:(CGFloat)side
+{
+    CGFloat width = size.width;
+    CGFloat height = size.height;
+    return side / MIN(width, height);
+}
+
 - (void)startRotting
 {
     //if it's sorted, we stop jittering
     if (self.rottingStage == AHRottingStageSaved) {
-        [self removeActionForKey:@"jitter"];
+        [self removeActionForKey:kBerryActionJitter];
         return;
     }
     
@@ -72,7 +70,8 @@
         SKAction *jitter = [SKAction sequence:@[[SKAction rotateToAngle:M_PI / 6 duration:.5],
                                                 [SKAction rotateToAngle:- M_PI / 6 duration:.5]]];
         
-        [self runAction:[SKAction repeatActionForever:jitter] withKey:@"jitter"];
+        [self runAction:[SKAction repeatActionForever:jitter]
+                withKey:kBerryActionJitter];
         
         //color to brown
         SKAction *rot = [SKAction sequence:@[[SKAction waitForDuration:1.5],
@@ -94,7 +93,7 @@
     if (self.rottingStage == AHRottingStageRotten) {
         
         //make jittering faster
-        SKAction *jitter = [self actionForKey:@"jitter"];
+        SKAction *jitter = [self actionForKey:kBerryActionJitter];
         jitter.speed *= 2;
         
         //flash yellow for strawberries, and white for the rest
@@ -109,7 +108,8 @@
     }
     
     if (self.rottingStage == AHRottingStageDead) {
-        
+        [self runAction:[AHBerrySprite explode]
+                withKey:@"explode"];
         //lose game
         [[NSNotificationCenter defaultCenter] postNotificationName:@"gameLost" object:self];
     }
@@ -123,17 +123,16 @@
     [self startRotting];
 }
 
-- (void)appear
++ (SKAction *)appear
 {
-    CGFloat oldScale = self.scale;
     
     //move up, make opaque, and shrink
     SKAction *prepare = [SKAction group:@[[SKAction moveByX:0 y:120 duration:0],
-                                          [SKAction scaleBy:.3 duration:0],
+                                          [SKAction scaleBy:1.0/3 duration:0],
                                           [SKAction fadeAlphaTo:1 duration:0]]];
     
     //make bigger
-    SKAction *appear = [SKAction scaleTo:oldScale duration:.6];
+    SKAction *appear = [SKAction scaleBy:3 duration:.6];
     
     //fall
     SKAction *fall = [SKAction moveByX:0 y:-120 duration:.6];
@@ -145,21 +144,36 @@
     //do all of those
     SKAction *final = [SKAction sequence:@[prepare,
                                            [SKAction group:@[appear, fall]],
-                                           bounce,
-                                           [SKAction performSelector:@selector(startRotting) onTarget:self]]];
+                                           bounce]];
     
-    [self runAction:final];
+    return final;
 }
 
-- (void)disappear
++ (SKAction *)disappearToPoint:(CGPoint)point
 {
-    //shrink, rotate and fade
-    CGFloat duration = 2.5;
+    CGFloat duration = 1.5;
+    SKAction *disappear = [SKAction sequence:@[[SKAction group:@[[SKAction rotateByAngle:3 * M_PI duration:duration],
+                                                                 [SKAction scaleTo:0 duration:duration],
+                                                                 [SKAction fadeOutWithDuration:duration],
+                                                                 [SKAction moveTo:point duration:duration]]],
+                                               [SKAction removeFromParent]]];
+    return disappear;
+}
+
++(SKAction *)disappear
+{
+    CGFloat duration = 1.5;
     SKAction *disappear = [SKAction sequence:@[[SKAction group:@[[SKAction rotateByAngle:3 * M_PI duration:duration],
                                                                  [SKAction scaleTo:0 duration:duration],
                                                                  [SKAction fadeOutWithDuration:duration]]],
                                                [SKAction removeFromParent]]];
-    [self runAction:disappear];
+    return disappear;
+}
+
++ (SKAction *)explode
+{
+    return [SKAction sequence:@[[SKAction scaleBy:2 duration:.7],
+                                [SKAction scaleTo:0 duration:.3]]];
 }
 
 //name for different AHBerryTypes

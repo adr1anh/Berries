@@ -34,6 +34,7 @@
         self.name = [berryTypeName stringByAppendingString:@"Camp"];
         
         self.berryType = type;
+        
     }
     return self;
 }

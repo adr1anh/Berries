@@ -10,6 +10,7 @@
 
 #import "AHDismissViewControllerProtocol.h"
 #import "AHGameScene.h"
+#import "AHFallingBerriesScene.h"
 
 @interface AHGameViewController : UIViewController <UIAlertViewDelegate>
 

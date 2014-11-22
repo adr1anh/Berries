@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B23" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <deployment version="1808" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
@@ -7,6 +7,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="KGSecondChancesSolid.ttf">
+            <string>KGSecondChancesSolid</string>
             <string>KGSecondChancesSolid</string>
             <string>KGSecondChancesSolid</string>
             <string>KGSecondChancesSolid</string>
@@ -119,12 +120,25 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TSR-XH-3gq" userLabel="Pause Button">
+                                        <rect key="frame" x="570" y="2" width="30" height="47"/>
+                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="27"/>
+                                        <state key="normal" title="II">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="pausePressed:" destination="iqR-lR-agE" eventType="touchUpInside" id="9Pj-K0-nSU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.2823529541" green="0.49803924560000001" blue="0.0039215688589999999" alpha="1" colorSpace="deviceRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="1Mo-0Z-y8y"/>
+                                    <constraint firstItem="TSR-XH-3gq" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="AVf-vz-WQG"/>
                                     <constraint firstItem="HuD-js-ebE" firstAttribute="leading" secondItem="UwC-nO-BW8" secondAttribute="leading" constant="20" symbolic="YES" id="KDl-6W-N6j"/>
                                     <constraint firstItem="zrd-tL-3aI" firstAttribute="centerX" secondItem="UwC-nO-BW8" secondAttribute="centerX" id="ped-xa-JqK"/>
+                                    <constraint firstAttribute="trailing" secondItem="TSR-XH-3gq" secondAttribute="trailing" id="qlN-CP-pmV"/>
                                     <constraint firstItem="HuD-js-ebE" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="zMm-7K-mnS"/>
                                     <constraint firstItem="zrd-tL-3aI" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="zgt-Kh-kJX"/>
                                 </constraints>

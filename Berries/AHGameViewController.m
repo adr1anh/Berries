@@ -14,7 +14,8 @@
 @property (weak, nonatomic) IBOutlet UIView *scoreBarView;
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (nonatomic, strong) AHGameScene *gameScene;
+@property (strong, nonatomic) AHGameScene *gameScene;
+@property (strong, nonatomic) AHFallingBerriesScene *pauseScene;
 
 @end
 
@@ -58,6 +59,37 @@
     }
 }
 
+- (AHFallingBerriesScene *)pauseScene
+{
+    if (!_pauseScene) {
+        _pauseScene = [[AHFallingBerriesScene alloc] initWithSize:self.gameScene.size];
+        _pauseScene.backgroundColor = [UIColor colorWithRed:72/255.0 green:127/255.0 blue:0 alpha:1];
+        
+        SKLabelNode *pauseLabel = [SKLabelNode labelNodeWithFontNamed:@"KGSecondChancesSolid"];
+        pauseLabel.fontColor = [SKColor whiteColor];
+        pauseLabel.fontSize = 56.0;
+        pauseLabel.text = @"Pause";
+        pauseLabel.zPosition = 2;
+        pauseLabel.position = CGPointMake(_pauseScene.size.width / 2,
+                                          _pauseScene.size.height * 3/4);
+        
+        [_pauseScene addChild:pauseLabel];
+    }
+    return _pauseScene;
+}
+
+- (IBAction)pausePressed:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"pauseGame" object:nil userInfo:@{@"paused" : @(self.gameScene.paused),
+                                                                                                  @"animated" : @(YES)}];
+    UIButton *button = (UIButton *) sender;
+    button.enabled = NO;
+    button.alpha = .5;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        button.enabled = YES;
+        button.alpha = 1;
+    });
+}
+
 #pragma mark Notifications
 
 //update time label
@@ -93,18 +125,59 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     //check if we got all values from the userInfo
-    id timeInfo = [notification.userInfo objectForKey:@"time"];
-    id scoreInfo = [notification.userInfo objectForKey:@"score"];
-    id dateInfo = [notification.userInfo objectForKey:@"date"];
-    if (timeInfo && scoreInfo && dateInfo) {
-        
-        //show score and ask what to do
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
-                                                        message:[NSString stringWithFormat:@"Congratulations!\nYou scored %lu points", (unsigned long)[(NSNumber *)scoreInfo unsignedLongValue]]
-                                                       delegate:self
-                                              cancelButtonTitle:nil
-                                              otherButtonTitles:@"Main Menu", @"Try Again", nil];
+    NSInteger score = [[notification.userInfo objectForKey:@"score"] integerValue];
+    NSInteger highScore = [[notification.userInfo objectForKey:@"highScore"] integerValue];
+    
+    
+    NSString *message;
+    if (score == highScore) {
+        message = [NSString stringWithFormat:@"New High Score!\nYou scored %lu points!", (long) score];
+    } else {
+        message = [NSString stringWithFormat:@"Congratulations!\nYou scored %lu points!\nBest: %lu", (long) score, (long) highScore];
+    }
+    //show score and ask what to do
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Game Over"
+                                                    message:message
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles:@"Main Menu", @"Try Again", nil];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [alert show];
+    });
+}
+
+- (void)pauseGame:(NSNotification *)notification
+{
+    id pausedInfo = [notification.userInfo objectForKey:@"paused"];
+    id animateInfo = [notification.userInfo objectForKey:@"animated"];
+    
+    if (pausedInfo) {
+        BOOL gamePaused = [pausedInfo boolValue];
+        
+        if (!gamePaused) {
+            self.gameScene.paused = !gamePaused;
+            self.pauseScene.paused = gamePaused;
+            
+            if (animateInfo) {
+                if ([animateInfo boolValue])
+                    [self.gameView presentScene:self.pauseScene  transition:[SKTransition moveInWithDirection:SKTransitionDirectionDown duration:1]];
+                else
+                    [self.gameView presentScene:self.pauseScene];
+            }
+        } else {
+            if (animateInfo) {
+                if ([animateInfo boolValue]) {
+                    [self.gameView presentScene:self.gameScene transition:[SKTransition revealWithDirection:SKTransitionDirectionDown duration:1]];
+                    self.pauseScene.paused = gamePaused;
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        self.gameScene.paused = !gamePaused;
+                    });
+                } else {
+                    [self.gameView presentScene:self.gameScene];
+                }
+            }
+        }
     }
 }
 
@@ -135,7 +208,7 @@
     self.gameScene = [[AHGameScene alloc] initWithSize:self.gameView.frame.size];
     
     //add the gameView (SKView)
-    [self.view addSubview:self.gameView];
+    [self.view insertSubview:self.gameView belowSubview:self.scoreBarView];
     
     //present the scene in the view
     [self.gameView presentScene:self.gameScene];
@@ -148,6 +221,7 @@
     [center addObserver:self selector:@selector(updateScore:) name:@"scoreChanged" object:nil];
     [center addObserver:self selector:@selector(endGame:) name:@"endGame" object:nil];
     [center addObserver:self selector:@selector(updateTime:) name:@"updateTime" object:nil];
+    [center addObserver:self selector:@selector(pauseGame:) name:@"pauseGame" object:nil];
     
     [super viewWillAppear:animated];
 }

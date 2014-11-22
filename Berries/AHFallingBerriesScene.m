@@ -34,7 +34,7 @@
                                                  repeats:YES];
     
     //add some berries at creation
-    for (int i = 0; i < 20; i++) {
+    for (int i = 0; i < 40; i++) {
         AHBerrySprite *newBerry = [self newFallingBerry];
         
         //random position on screen
@@ -71,6 +71,8 @@
     
     //random rotation
     berry.zRotation = - M_PI / 6 + arc4random_uniform(10) * M_PI / 30;
+    
+    berry.zPosition = 1;
     
     //falling action with random time
     CGFloat fallDuration = (10 + arc4random_uniform(10));

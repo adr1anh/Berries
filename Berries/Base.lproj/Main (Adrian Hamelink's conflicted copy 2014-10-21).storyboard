@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <deployment version="1808" defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="KGSecondChancesSolid.ttf">
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+            <string>KGSecondChancesSolid</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Main Menu View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="AHMainMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ptb-Qg-lNj"/>
+                        <viewControllerLayoutGuide type="bottom" id="X8Z-FK-2Mf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DsF-uL-HaM">
+                                <rect key="frame" x="283" y="284" width="35" height="31"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
+                                <state key="normal" title="Play">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="newGame:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="KYV-t5-kQg"/>
+                                    <segue destination="iqR-lR-agE" kind="presentation" identifier="gameSegue" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="k3A-pt-n7u"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MCk-xV-tul">
+                                <rect key="frame" x="246" y="323" width="108" height="31"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
+                                <state key="normal" title="Leaderboard">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C1H-MU-Rpb" userLabel="Sound">
+                                <rect key="frame" x="260" y="362" width="81" height="31"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
+                                <state key="normal" title="Sound: ON">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tBY-7K-EHZ">
+                                <rect key="frame" x="275" y="401" width="51" height="31"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="15"/>
+                                <state key="normal" title="About">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="r6F-Fm-3rk" kind="presentation" identifier="aboutSegue" id="Myc-Nt-QOQ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Berries" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOn-3Q-cH1">
+                                <rect key="frame" x="200" y="168" width="200" height="66"/>
+                                <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="52"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="tBY-7K-EHZ" firstAttribute="top" secondItem="C1H-MU-Rpb" secondAttribute="bottom" constant="8" symbolic="YES" id="6hk-Hh-288"/>
+                            <constraint firstAttribute="centerX" secondItem="tBY-7K-EHZ" secondAttribute="centerX" id="6io-Ul-XhM"/>
+                            <constraint firstItem="C1H-MU-Rpb" firstAttribute="top" secondItem="MCk-xV-tul" secondAttribute="bottom" constant="8" symbolic="YES" id="DCI-rz-3Kv"/>
+                            <constraint firstItem="MCk-xV-tul" firstAttribute="top" secondItem="DsF-uL-HaM" secondAttribute="bottom" constant="8" symbolic="YES" id="LzX-5b-PbO"/>
+                            <constraint firstItem="DsF-uL-HaM" firstAttribute="top" secondItem="vOn-3Q-cH1" secondAttribute="bottom" constant="50" id="VTG-tI-JF6"/>
+                            <constraint firstItem="DsF-uL-HaM" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="dMJ-5E-fOU"/>
+                            <constraint firstAttribute="centerY" secondItem="DsF-uL-HaM" secondAttribute="centerY" constant="0.5" id="dvg-mk-ovN"/>
+                            <constraint firstItem="C1H-MU-Rpb" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="hrw-lj-yhf"/>
+                            <constraint firstAttribute="centerX" secondItem="vOn-3Q-cH1" secondAttribute="centerX" id="kUD-a7-ErS"/>
+                            <constraint firstItem="MCk-xV-tul" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="ttk-IC-ZG6"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="404"/>
+        </scene>
+        <!--Game View Controller-->
+        <scene sceneID="ygh-2h-O12">
+            <objects>
+                <viewController id="iqR-lR-agE" customClass="AHGameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5SX-gu-aUw"/>
+                        <viewControllerLayoutGuide type="bottom" id="8sf-NX-K7W"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wqj-kz-Mgg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwC-nO-BW8" userLabel="Score Bar">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="50"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrd-tL-3aI" userLabel="Score Label">
+                                        <rect key="frame" x="293" y="11" width="15" height="28"/>
+                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HuD-js-ebE" userLabel="Time Label">
+                                        <rect key="frame" x="20" y="11" width="49" height="28"/>
+                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egj-MQ-rpw" userLabel="Pause">
+                                        <rect key="frame" x="550" y="5" width="30" height="40"/>
+                                        <fontDescription key="fontDescription" name="KGSecondChancesSolid" family="KG Second Chances Solid" pointSize="22"/>
+                                        <state key="normal" title="II">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.28235295414924622" green="0.49803924560546875" blue="0.0039215688593685627" alpha="1" colorSpace="deviceRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="egj-MQ-rpw" secondAttribute="trailing" constant="20" symbolic="YES" id="07n-u0-ki9"/>
+                                    <constraint firstAttribute="height" constant="50" id="1Mo-0Z-y8y"/>
+                                    <constraint firstItem="HuD-js-ebE" firstAttribute="leading" secondItem="UwC-nO-BW8" secondAttribute="leading" constant="20" symbolic="YES" id="KDl-6W-N6j"/>
+                                    <constraint firstItem="egj-MQ-rpw" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="iJj-Qw-nW7"/>
+                                    <constraint firstItem="zrd-tL-3aI" firstAttribute="centerX" secondItem="UwC-nO-BW8" secondAttribute="centerX" id="ped-xa-JqK"/>
+                                    <constraint firstItem="HuD-js-ebE" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="zMm-7K-mnS"/>
+                                    <constraint firstItem="zrd-tL-3aI" firstAttribute="centerY" secondItem="UwC-nO-BW8" secondAttribute="centerY" id="zgt-Kh-kJX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="trailing" secondItem="wqj-kz-Mgg" secondAttribute="trailing" id="BWm-HH-0p8"/>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="leading" secondItem="wqj-kz-Mgg" secondAttribute="leading" id="MDD-Xf-BbF"/>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="top" secondItem="5SX-gu-aUw" secondAttribute="top" id="WKu-gS-pf5"/>
+                            <constraint firstItem="UwC-nO-BW8" firstAttribute="width" secondItem="wqj-kz-Mgg" secondAttribute="width" id="sgs-YV-xed"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="8sz-iL-Wia"/>
+                    <connections>
+                        <outlet property="scoreBarView" destination="UwC-nO-BW8" id="9Dk-U3-7sg"/>
+                        <outlet property="scoreLabel" destination="zrd-tL-3aI" id="ZIb-Hg-txT"/>
+                        <outlet property="timeLabel" destination="HuD-js-ebE" id="cHP-xf-6Nn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OeW-jw-pEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1230" y="422"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="wN8-4t-ueQ">
+            <objects>
+                <viewController id="r6F-Fm-3rk" customClass="AHMenuViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qOu-j4-9FO"/>
+                        <viewControllerLayoutGuide type="bottom" id="jrf-2B-Qbq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tMW-a0-lDd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="53b-SJ-g1b"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tcu-ds-aKu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="446" y="1147"/>
+        </scene>
+    </scenes>
+</document>
